@@ -12,27 +12,44 @@ project:
       affiliations:
         - id: unil
           institution: University of Lausanne
-    # - name: Filippo Quarenghi
-    #   affiliations: [unil]
+    - name: Milton Gomez
+      affiliations: [unil]
+    - name: Frederick Iat-Hin Tam
+      affiliations: [unil]
+    - name: Jingyan Yu
+      affiliations: [unil]
+    - name: Saranya Ganesh S
+      affiliations: [unil]
+    - name: Haokun Liu
+      affiliations: [unil]
+    - name: Kejdi LLeshi
+      affiliations: [unil]
+    - name: Ayoub Fatihi  
+      affiliations: [unil]
+    - name: Shivanshi Ashtana
+      affiliations: [unil]
+    - name: Filippo Quarenghi
+      affiliations: [unil]
   github: gse-unil/2026_MLEES_book          # enables "Edit on GitHub"
   license:
     content: CC-BY-4.0
     code: MIT
-  # bibliography:
-  #   - references.bib
-  # numbering:
-  #   figure: true
-  #   equation: true
-  # exclude:
-  #   - README.md
-  #   - drafts/**
-  # settings:
-  #   output_stderr: remove                   # drop noisy warnings from the rendered page
-  #   output_stdout: show
-  # error_rules:
-  #   - rule: link-resolves
-  #     severity: error                       # fail the build on broken links/badges
-  # toc:
+  bibliography:
+    - references.bib
+  numbering:
+    figure: true
+    equation: true
+  exclude:
+    - README.md
+    - drafts/**
+  settings:
+    output_stderr: remove                   # drop noisy warnings from the rendered page
+    output_stdout: show
+  error_rules:
+    - rule: link-resolves
+      severity: error                       # fail the build on broken links/badges
+  toc:
+      - file: CONTRIBUTING.md
   #   - file: index.md
   #   - title: Part I — Scientific Python
   #     children:
