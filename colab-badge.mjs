@@ -39,7 +39,9 @@ const addColabBadge = {
         {
           type: 'link',
           url,
-          children: [{ type: 'image', url: BADGE, alt: 'Open In Colab' }],
+          children: [
+            { type: 'image', url: BADGE, alt: 'Open In Colab', align: 'left' },
+          ],
         },
       ],
     };

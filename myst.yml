@@ -31,8 +31,7 @@ project:
     # - name: Filippo Quarenghi
     #   affiliations: [unil]
   github: gse-unil/2026_MLEES_book
-  jupyter:
-    plugins:
+  plugins:
     - colab-badge.mjs
   license:
     content: CC-BY-4.0
