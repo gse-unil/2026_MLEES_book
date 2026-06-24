@@ -1,0 +1,58 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+
+project:
+  id: c6919c1b-dffe-4135-8872-8f9c7b4312e5   # auto-generated UUID; leave it
+  title: Machine Learning for Earth and Environmental Sciences
+  description: An applied, geoscience-grounded course in scientific Python and ML.
+  keywords: [machine learning, climate, atmospheric science, python]
+  authors:
+    - name: Tom Beucler
+      orcid: 0000-0002-5731-1040
+      affiliations:
+        - id: unil
+          institution: University of Lausanne
+    # - name: Filippo Quarenghi
+    #   affiliations: [unil]
+  # github: tbeucler/2026_MLEES_book          # enables "Edit on GitHub"
+  license:
+    content: CC-BY-4.0
+    code: MIT
+  # bibliography:
+  #   - references.bib
+  # numbering:
+  #   figure: true
+  #   equation: true
+  # exclude:
+  #   - README.md
+  #   - drafts/**
+  # settings:
+  #   output_stderr: remove                   # drop noisy warnings from the rendered page
+  #   output_stdout: show
+  # error_rules:
+  #   - rule: link-resolves
+  #     severity: error                       # fail the build on broken links/badges
+  # toc:
+  #   - file: index.md
+  #   - title: Part I — Scientific Python
+  #     children:
+  #       - file: ip/01-variables.ipynb
+  #       - file: ip/02-numpy.ipynb
+  #       - file: ip/03-xarray.ipynb
+  #   - title: Part II — Machine Learning
+  #     children:
+  #       - file: ml/01-regression.ipynb
+  #       - file: ml/02-deep-learning.ipynb
+
+site:
+  template: book-theme
+  title: MLEES
+  # options:
+  #   logo: images/logo.png
+  #   favicon: images/favicon.ico
+  # nav:
+  #   - title: Course
+  #     url: https://www.unil.ch/...
+  # actions:
+  #   - title: GitHub
+  #     url: https://github.com/tbeucler/2026_MLEES_book
