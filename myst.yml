@@ -7,30 +7,33 @@ project:
   description: An applied, geoscience-grounded course in scientific Python and ML.
   keywords: [machine learning, climate, atmospheric science, python]
   authors:
-    - name: Tom Beucler
-      orcid: 0000-0002-5731-1040
-      affiliations:
-        - id: unil
-          institution: University of Lausanne
-    - name: Milton Gomez
-      affiliations: [unil]
-    - name: Frederick Iat-Hin Tam
-      affiliations: [unil]
-    - name: Jingyan Yu
-      affiliations: [unil]
-    - name: Saranya Ganesh S
-      affiliations: [unil]
-    - name: Haokun Liu
-      affiliations: [unil]
-    - name: Kejdi LLeshi
-      affiliations: [unil]
-    - name: Ayoub Fatihi  
-      affiliations: [unil]
-    - name: Shivanshi Ashtana
-      affiliations: [unil]
-    - name: Filippo Quarenghi
-      affiliations: [unil]
-  github: gse-unil/2026_MLEES_book          # enables "Edit on GitHub"
+    # - name: Tom Beucler
+    #   orcid: 0000-0002-5731-1040
+    #   affiliations:
+    #     - id: unil
+    #       institution: University of Lausanne
+    # - name: Milton Gomez
+    #   affiliations: [unil]
+    # - name: Frederick Iat-Hin Tam
+    #   affiliations: [unil]
+    # - name: Jingyan Yu
+    #   affiliations: [unil]
+    # - name: Saranya Ganesh S
+    #   affiliations: [unil]
+    # - name: Haokun Liu
+    #   affiliations: [unil]
+    # - name: Kejdi LLeshi
+    #   affiliations: [unil]
+    # - name: Ayoub Fatihi  
+    #   affiliations: [unil]
+    # - name: Shivanshi Ashtana
+    #   affiliations: [unil]
+    # - name: Filippo Quarenghi
+    #   affiliations: [unil]
+  github: gse-unil/2026_MLEES_book
+  jupyter:
+    plugins:
+    - colab-badge.mjs
   license:
     content: CC-BY-4.0
     code: MIT
@@ -48,18 +51,14 @@ project:
   error_rules:
     - rule: link-resolves
       severity: error                       # fail the build on broken links/badges
+  
+  # Table of contents (TOC) for the book. The TOC is used to generate the navigation menu and the sidebar.
   toc:
-      - file: CONTRIBUTING.md
-  #   - file: index.md
-  #   - title: Part I — Scientific Python
-  #     children:
-  #       - file: ip/01-variables.ipynb
-  #       - file: ip/02-numpy.ipynb
-  #       - file: ip/03-xarray.ipynb
-  #   - title: Part II — Machine Learning
-  #     children:
-  #       - file: ml/01-regression.ipynb
-  #       - file: ml/02-deep-learning.ipynb
+    - file: index.md
+    - title: Part I — Scientific Python
+      children:
+        - file: ip/01-python-foundations.ipynb
+    - file: CONTRIBUTING.md
 
 site:
   template: book-theme

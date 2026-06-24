@@ -1,3 +1,6 @@
+% TODO: check for errors in the text
+% TODO: add different platforms not only MacOS
+
 # Contributing to the MLEES book
 
 Thanks for helping build *Machine Learning for Earth and Environmental Sciences*. This guide covers everything you need to edit the book: how to set up your environment, how the publishing pipeline works, and the conventions we follow so the book stays consistent and reproducible.
