@@ -14,7 +14,7 @@ project:
           institution: University of Lausanne
     # - name: Filippo Quarenghi
     #   affiliations: [unil]
-  # github: tbeucler/2026_MLEES_book          # enables "Edit on GitHub"
+  github: gse-unil/2026_MLEES_book          # enables "Edit on GitHub"
   license:
     content: CC-BY-4.0
     code: MIT
