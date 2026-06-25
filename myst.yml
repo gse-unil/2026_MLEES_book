@@ -6,30 +6,30 @@ project:
   title: Machine Learning for Earth and Environmental Sciences
   description: An applied, geoscience-grounded course in scientific Python and ML.
   keywords: [machine learning, climate, atmospheric science, python]
-  authors:
-    # - name: Tom Beucler
-    #   orcid: 0000-0002-5731-1040
-    #   affiliations:
-    #     - id: unil
-    #       institution: University of Lausanne
-    # - name: Milton Gomez
-    #   affiliations: [unil]
-    # - name: Frederick Iat-Hin Tam
-    #   affiliations: [unil]
-    # - name: Jingyan Yu
-    #   affiliations: [unil]
-    # - name: Saranya Ganesh S
-    #   affiliations: [unil]
-    # - name: Haokun Liu
-    #   affiliations: [unil]
-    # - name: Kejdi LLeshi
-    #   affiliations: [unil]
-    # - name: Ayoub Fatihi  
-    #   affiliations: [unil]
-    # - name: Shivanshi Ashtana
-    #   affiliations: [unil]
-    # - name: Filippo Quarenghi
-    #   affiliations: [unil]
+  # authors:
+  #   - name: Tom Beucler
+  #     orcid: 0000-0002-5731-1040
+  #     affiliations:
+  #       - id: unil
+  #         institution: University of Lausanne
+  #   - name: Milton Gomez
+  #     affiliations: [unil]
+  #   - name: Frederick Iat-Hin Tam
+  #     affiliations: [unil]
+  #   - name: Jingyan Yu
+  #     affiliations: [unil]
+  #   - name: Saranya Ganesh S
+  #     affiliations: [unil]
+  #   - name: Haokun Liu
+  #     affiliations: [unil]
+  #   - name: Kejdi LLeshi
+  #     affiliations: [unil]
+  #   - name: Ayoub Fatihi  
+  #     affiliations: [unil]
+  #   - name: Shivanshi Ashtana
+  #     affiliations: [unil]
+  #   - name: Filippo Quarenghi
+  #     affiliations: [unil]
   github: gse-unil/2026_MLEES_book
   plugins:
     - colab-badge.mjs
@@ -54,14 +54,72 @@ project:
   # Table of contents (TOC) for the book. The TOC is used to generate the navigation menu and the sidebar.
   toc:
     - file: index.md
-    - title: I) Basics of Scientific Programming for Applied Machine Learning in Python
+
+    # Appendix
+    - file: appendix/appendix.md
       children:
-        - file: part-I/00-intro.ipynb
+        - file: appendix/00-setup-version-control-ai-literacy.ipynb
+
+    # Part I: Introduction to Python for Earth and Environmental Sciences
+    - file: part-I/part-I.md
+    - title: "1) Introduction to Python for Earth and Environmental Sciences"
+    - file: part-I/ch-1-intro.md
+      children:
+        - file: part-0/00-setup-version-control-ai-literacy.ipynb
+        - file: part-I/01-environment-and-data-types.ipynb
+        - file: part-I/01-environment-and-data-types-exercises.ipynb
+    
+    # Part II: Basics of Machine Learning for Earth and Environmental Sciences
+    - file: part-II/part-II.md
+    - title: "2) Linear Regression for Regression, Logistic Regression for Classification and Statistical Forecasting"
+      children:
         - file: part-I/01-python-fundamentals.ipynb
         - file: part-I/01-python-fundamentals-exercises.ipynb
-    - title: II) Basics of Machine Learning for Earth and Environmental Sciences
-    - title: III) Deep Learning for the Geosciences
-    - title: IV) Towards Trustworthy AI
+    - title: "3) Basics of Machine Learning for Earth and Environmental Sciences"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: "4) Unsupervised Learning (Clustering, Dimensionality Reduction) and Environmental Complexity"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+
+    # Part III: Basics of Machine Learning for Earth and Environmental Sciences
+    - file: part-III/part-III.md
+    - title: "5) Artificial Neural Networks and Surrogate Modeling"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: "6) Convolutional Neural Networks and Remote Sensing"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: "7) Recurrent Neural Networks and Hydrological Modeling"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: "8) Graph Neural Networks and Interconnected Systems"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+
+    # Part IV: Towards Trustworthy AI
+    - file: part-IV/part-IV.md
+    - title: "9) Explainable Artificial Intelligence and Understanding Predictions"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: "10) Generative Modeling and Uncertainty Quantification"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: "11) Hybrid Modeling and Knowledge-Guided Machine Learning"
+      children:
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+
+
+    # Contributing
     - file: CONTRIBUTING.md
 
 site:

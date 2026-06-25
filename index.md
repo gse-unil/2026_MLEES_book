@@ -9,8 +9,8 @@ learn each tool in the setting where it is actually used.
 
 :::{admonition} This book is under active development
 :class: note
-Chapters are being written and refreshed. Expect content to grow and change.
-If you spot an error or have a suggestion, see [how to contribute](CONTRIBUTING.md).
+This is the fall 2026 edition of this book. Chapters are being written and refreshed. Expect content to grow and change.
+If you spot an error or have a suggestion, see [how to contribute](CONTRIBUTING.md). Previous versions of this book are available at (#TODO: add link to previous versions.)
 :::
 
 ## Who this book is for
@@ -34,8 +34,7 @@ This lets the same chapter serve a complete beginner and a motivated reader at
 once.
 
 **Everything runs.** Most pages are live notebooks. You can read them here as
-rendered text and figures, or run them yourself — launch a page in the cloud
-using the rocket icon at the top, or clone the
+rendered text and figures, or run them yourself — launch a page in google Colab using the badge icon at the top, or clone the
 [repository](https://github.com/gse-unil/2026_MLEES_book) and run it locally. The
 best way to learn is to change a value, re-run, and see what happens.
 
@@ -50,21 +49,28 @@ something you could actually use in research.
 :gutter: 3
 
 :::{card} Part I — Scientific Python
-:link: ip/01-python-foundations
+:link: part-I/part-I
 Programming foundations from zero, the numerical and data stack
 (`numpy`, `pandas`, `xarray`, `matplotlib`), plotting and maps, and reproducible,
 cloud-native workflows for gridded geoscientific data.
 :::
 
-:::{card} Part II — Machine learning
-:link: #
+:::{card} Part II — Basics of Machine Learning for Earth and Environmental Sciences
+:link: part-II/part-II
 Regression and classification, honest model evaluation, unsupervised methods,
 and the bridge from classical estimators to neural networks — each grounded in an
 environmental problem.
 :::
 
-:::{card} Part III — Deep learning & applications
-:link: #
+:::{card} Part III — Deep Learning for the Geosciences
+:link: part-III/part-III
+Neural networks in PyTorch, architectures for spatial and sequential data, and
+applications such as remote sensing, downscaling, and emulation, alongside
+explainability and uncertainty quantification.
+:::
+
+:::{card} Part IV — Towards Thustworthy AI
+:link: part-IV/part-IV
 Neural networks in PyTorch, architectures for spatial and sequential data, and
 applications such as remote sensing, downscaling, and emulation, alongside
 explainability and uncertainty quantification.
@@ -73,23 +79,18 @@ explainability and uncertainty quantification.
 :::{card} How to contribute
 :link: CONTRIBUTING.md
 The book is open. Fixing a typo or authoring a chapter — the contributor guide
-explains the workflow and conventions.
+explains the workflow and conventions. (# TODO: Check for GitHub restrictions)
 :::
 
 ::::
 
 ## Before you start
 
-For Part I you need nothing but a web browser; the cloud-launch option requires
-only a free account. To run the book on your own machine, you need
+For Part I you need nothing but a web browser; the Google Colab option to run the notebooks requires
+only a free google account. To run the book on your own machine, you need
 [git](https://git-scm.com/) and [uv](https://docs.astral.sh/uv/) — the
 [setup instructions](CONTRIBUTING.md) walk you through it. A little familiarity
 with the command line helps but is not required.
-
-## Ready?
-
-Start with [**First steps in Python**](ip/01-python-foundations) — no installation,
-no prior knowledge, just open it and run the first cell.
 
 ---
 
