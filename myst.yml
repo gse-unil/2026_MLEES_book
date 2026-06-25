@@ -54,9 +54,14 @@ project:
   # Table of contents (TOC) for the book. The TOC is used to generate the navigation menu and the sidebar.
   toc:
     - file: index.md
-    - title: Part I — Scientific Python
+    - title: I) Basics of Scientific Programming for Applied Machine Learning in Python
       children:
-        - file: ip/01-python-foundations.ipynb
+        - file: part-I/00-intro.ipynb
+        - file: part-I/01-python-fundamentals.ipynb
+        - file: part-I/01-python-fundamentals-exercises.ipynb
+    - title: II) Basics of Machine Learning for Earth and Environmental Sciences
+    - title: III) Deep Learning for the Geosciences
+    - title: IV) Towards Trustworthy AI
     - file: CONTRIBUTING.md
 
 site:
