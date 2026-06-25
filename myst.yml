@@ -68,6 +68,8 @@ project:
         - file: part-0/00-setup-version-control-ai-literacy.ipynb
         - file: part-I/01-environment-and-data-types.ipynb
         - file: part-I/01-environment-and-data-types-exercises.ipynb
+        - file: part-I/02-data-structures-and-control-flow.ipynb
+        - file: part-I/02-data-structures-and-control-flow-exercises.ipynb
     
     # Part II: Basics of Machine Learning for Earth and Environmental Sciences
     - file: part-II/part-II.md
