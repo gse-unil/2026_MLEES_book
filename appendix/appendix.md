@@ -1,3 +1,3 @@
-# APPENDIX - SETUP, VERSION CONTROL AND AI LITERACY
+# SETUP
 
 % #TODO: improve, make it a markdown file, not a jupyter notebook
