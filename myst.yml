@@ -75,6 +75,10 @@ project:
         - file: part-I/04-matplotlib-and-xarray-exercises.ipynb
         - file: part-I/05-pandas.ipynb
         - file: part-I/05-pandas-exercises.ipynb
+        - file: part-I/06-reproducible-data-pipelines.ipynb
+        - file: part-I/06-reproducible-data-pipelines-exercises.ipynb
+        - file: part-I/07-oop-for-natural-systems.ipynb
+        - file: part-I/07-oop-for-natural-systems-exercises.ipynb
 
     # # Part II: Basics of Machine Learning for Earth and Environmental Sciences
     # - file: part-II/part-II.md
