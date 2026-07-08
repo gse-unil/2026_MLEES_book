@@ -4,32 +4,34 @@ version: 1
 project:
   id: c6919c1b-dffe-4135-8872-8f9c7b4312e5   # auto-generated UUID; leave it
   title: Machine Learning for Earth and Environmental Sciences
+  subtitle: Subtitle of the book
   description: An applied, geoscience-grounded course in scientific Python and ML.
   keywords: [machine learning, climate, atmospheric science, python]
+  logo: images/logo_new.png
   # authors:
   #   - name: Tom Beucler
   #     orcid: 0000-0002-5731-1040
-  #     affiliations:
-  #       - id: unil
-  #         institution: University of Lausanne
+  #     # affiliations:
+  #       #- id: unil
+  #        # institution: University of Lausanne
   #   - name: Milton Gomez
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Frederick Iat-Hin Tam
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Jingyan Yu
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Saranya Ganesh S
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Haokun Liu
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Kejdi LLeshi
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Ayoub Fatihi  
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Shivanshi Ashtana
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   #   - name: Filippo Quarenghi
-  #     affiliations: [unil]
+  #     #affiliations: [unil]
   github: gse-unil/2026_MLEES_book
   plugins:
     - colab-badge.mjs
@@ -51,7 +53,7 @@ project:
     - rule: link-resolves
       severity: error                       # fail the build on broken links/badges
   
-  # Table of contents (TOC) for the book. The TOC is used to generate the navigation menu and the sidebar.
+  # Table of contents (TOC) for the book.
   toc:
     - file: index.md
 
@@ -79,6 +81,12 @@ project:
         - file: part-I/06-reproducible-data-pipelines-exercises.ipynb
         - file: part-I/07-oop-for-natural-systems.ipynb
         - file: part-I/07-oop-for-natural-systems-exercises.ipynb
+        - file: part-I/08-defensive-programming-and-packaging.ipynb
+        - file: part-I/08-defensive-programming-and-packaging-exercises.ipynb
+        - file: part-I/09-geospatial-vector-data.ipynb
+        - file: part-I/09-geospatial-vector-data-exercises.ipynb
+        - file: part-I/10-statistical-foundations-and-ml.ipynb
+        - file: part-I/10-statistical-foundations-and-ml-exercises.ipynb
 
     # # Part II: Basics of Machine Learning for Earth and Environmental Sciences
     # - file: part-II/part-II.md
@@ -136,12 +144,20 @@ project:
 site:
   template: book-theme
   title: MLEES
-  # options:
-  #   logo: images/logo.png
-  #   favicon: images/favicon.ico
+  options:
+    logo: images/logo_new.png
+    logo_text: Machine Learning for Earth and Environmental Sciences
+    favicon: images/favicon.ico
   # nav:
-  #   - title: Course
+  #   - title: Link_1
   #     url: https://www.unil.ch/...
-  # actions:
-  #   - title: GitHub
-  #     url: https://github.com/tbeucler/2026_MLEES_book
+  #   - title: Link_2
+  #     url: https://www.unil.ch/...
+  #   - title: Link_3
+  #     url: https://www.unil.ch/...
+  parts:
+    primary_sidebar_footer: site/custom_footer.md
+    # navbar_end: site/custom_navbar_end.md
+  actions:
+    - title: GitHub
+      url: https://github.com/gse-unil/2026_MLEES_book
