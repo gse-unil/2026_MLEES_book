@@ -149,7 +149,6 @@ project:
     #     - file: part-I/01-python-fundamentals.ipynb
     #     - file: part-I/01-python-fundamentals-exercises.ipynb
 
-
     # Contributing
     - file: CONTRIBUTING.md
 
