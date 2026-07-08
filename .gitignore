@@ -11,3 +11,6 @@ wheels/
 
 # MyST build outputs
 _build
+
+# MacOS
+.DS_Store

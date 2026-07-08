@@ -1,0 +1,12 @@
+/* Prevent clicking or toggling the locked solution */
+.locked-solution summary {
+    pointer-events: none !important; /* Disables all mouse clicks on the header toggle */
+    cursor: default !important;     /* Changes pointing hand back to normal arrow cursor */
+}
+
+/* Remove the native HTML dropdown triangle icon */
+.locked-solution summary::-webkit-details-marker,
+.locked-solution summary::marker {
+    display: none !important;
+    content: "";
+}
