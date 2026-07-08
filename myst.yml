@@ -64,8 +64,8 @@ project:
 
     # Part I: Introduction to Python for Earth and Environmental Sciences
     - file: part-I/part-I.md
-    - title: "1) Introduction to Python for Earth and Environmental Sciences"
     - file: part-I/ch-1-intro.md
+      title: "1) Introduction to Python for Earth and Environmental Sciences"
       children:
         - file: part-I/01-environment-and-data-types.ipynb
           children:
@@ -156,10 +156,15 @@ site:
   template: book-theme
   title: MLEES
   options:
-    logo: images/logo_new.png
     logo_text: Machine Learning for Earth and Environmental Sciences
     favicon: images/favicon.ico
     style: custom.css
+  parts:
+    primary_sidebar_footer: site/custom_footer.md
+    navbar_end: site/custom_navbar_end.md
+  actions:
+    - title: GitHub
+      url: https://github.com/gse-unil/2026_MLEES_book
   # nav:
   #   - title: Link_1
   #     url: https://www.unil.ch/...
@@ -167,9 +172,3 @@ site:
   #     url: https://www.unil.ch/...
   #   - title: Link_3
   #     url: https://www.unil.ch/...
-  parts:
-    primary_sidebar_footer: site/custom_footer.md
-    # navbar_end: site/custom_navbar_end.md
-  actions:
-    - title: GitHub
-      url: https://github.com/gse-unil/2026_MLEES_book

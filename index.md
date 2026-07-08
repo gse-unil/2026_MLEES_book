@@ -1,5 +1,7 @@
 # Machine Learning for Earth and Environmental Sciences
 
+
+
 Welcome. This is a hands-on, open textbook about using scientific Python and
 machine learning to study the Earth and its environment. It is built for a wide
 range of readers — from someone opening a code editor for the very first time to
@@ -10,8 +12,7 @@ learn each tool in the setting where it is actually used.
 :::{admonition} This book is under active development
 :class: note
 This is the fall 2026 edition of this book. Chapters are being written and refreshed. Expect content to grow and change.
-If you spot an error or have a suggestion, see [how to contribute](CONTRIBUTING.md) and feel free to open a pull request. 
-% Previous versions of this book are available at (#TODO: add link to previous versions.)
+If you spot an error or have a suggestion, see [how to contribute](CONTRIBUTING.md). Previous versions of this book are available at (#TODO: add link to previous versions.)
 :::
 
 ## Who this book is for
@@ -29,7 +30,6 @@ No prior programming experience is assumed. Part I builds Python from the ground
 ## What's inside
 
 ::::{grid} 1 1 2 2
-:gutter: 3
 
 :::{card} Part I — Scientific Python
 :link: part-I/part-I
