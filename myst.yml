@@ -78,6 +78,7 @@ project:
         - file: part-I/03-numpy.ipynb
           children:
           - file: part-I/03-numpy-exercises.ipynb
+          - file: part-I/03-numpy-solutions.ipynb
         - file: part-I/04-matplotlib-and-xarray.ipynb
           children:
           - file: part-I/04-matplotlib-and-xarray-exercises.ipynb
@@ -90,12 +91,12 @@ project:
         - file: part-I/07-oop-for-natural-systems.ipynb
           children:
           - file: part-I/07-oop-for-natural-systems-exercises.ipynb
-        - file: part-I/08-defensive-programming-and-packaging.ipynb
-          children:
-          - file: part-I/08-defensive-programming-and-packaging-exercises.ipynb
-        - file: part-I/09-geospatial-vector-data.ipynb
-          children:
-          - file: part-I/09-geospatial-vector-data-exercises.ipynb
+        # - file: part-I/08-defensive-programming-and-packaging.ipynb
+        #   children:
+        #   - file: part-I/08-defensive-programming-and-packaging-exercises.ipynb
+        # - file: part-I/09-geospatial-vector-data.ipynb
+        #   children:
+        #   - file: part-I/09-geospatial-vector-data-exercises.ipynb
         - file: part-I/10-statistical-foundations-and-ml.ipynb
           children:
           - file: part-I/10-statistical-foundations-and-ml-exercises.ipynb
@@ -156,6 +157,7 @@ site:
   template: book-theme
   title: MLEES
   options:
+    logo: images/logo_new.png
     logo_text: Machine Learning for Earth and Environmental Sciences
     favicon: images/favicon.ico
     style: custom.css
