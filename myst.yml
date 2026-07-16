@@ -82,6 +82,7 @@ project:
         - file: part-I/04-matplotlib-and-xarray.ipynb
           children:
           - file: part-I/04-matplotlib-and-xarray-exercises.ipynb
+          # - file: part-I/04-matplotlib-and-xarray-solutions.ipynb
         - file: part-I/05-pandas.ipynb
           children:
           - file: part-I/05-pandas-exercises.ipynb
