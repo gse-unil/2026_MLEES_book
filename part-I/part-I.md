@@ -1,4 +1,4 @@
-# PYTHON FUNDAMENTLS FOR EARTH AND ENVIRONMENTAL SCIENCES
+# (Part I) Basics of Scientific Programming for Applied Machine Learning
 
 ## Introduction
 
