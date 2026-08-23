@@ -1,3 +1,6 @@
+# LLM Assist
+.claude
+
 # Python-generated files
 __pycache__/
 *.py[oc]
