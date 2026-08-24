@@ -1,5 +1,8 @@
 % TODO: check for errors in the text
 % TODO: add different platforms not only MacOS
+% TODO: add policy for data (smaller than 50MB can stay in the data/ otherwise zenodo.)
+% TODO: add policy for drafts in drafts/
+% TODO: add policy for images, put them always in _static/, while put files created by the notebooks in _files/
 
 # Contributing to the MLEES book
 
