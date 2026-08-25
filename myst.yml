@@ -91,26 +91,29 @@ project:
               children:
               - file: part-I/05-pandas-exercises.ipynb
               # - file: part-I/05-pandas-solutions.ipynb
-            - file: part-I/06-reproducible-data-pipelines.ipynb
+            - file: part-I/06-geospatial-vector-data.ipynb
               children:
-              - file: part-I/06-reproducible-data-pipelines-exercises.ipynb
-              # - file: part-I/06-reproducible-data-pipelines-solutions.ipynb
+              - file: part-I/06-geospatial-vector-data-exercises.ipynb
+              # - file: part-I/06-geospatial-vector-data-solutions.ipynb
             - file: part-I/07-oop-for-natural-systems.ipynb
               children:
               - file: part-I/07-oop-for-natural-systems-exercises.ipynb
               # - file: part-I/07-oop-for-natural-systems-solutions.ipynb
-            - file: part-I/08-defensive-programming-and-packaging.ipynb
+            - file: part-I/08-statistical-foundations-and-ml.ipynb
               children:
-              - file: part-I/08-defensive-programming-and-packaging-exercises.ipynb
-              # - file: part-I/08-defensive-programming-and-packaging-solutions.ipynb
-            - file: part-I/09-geospatial-vector-data.ipynb
+              - file: part-I/08-statistical-foundations-and-ml-exercises.ipynb
+              # - file: part-I/08-statistical-foundations-and-ml-solutions.ipynb
+        - file: part-I/bonus.md
+          title: "2) Bonus material"
+          children:
+            - file: part-I/bonus-a-reproducible-data-pipelines.ipynb
               children:
-              - file: part-I/09-geospatial-vector-data-exercises.ipynb
-              # - file: part-I/09-geospatial-vector-data-solutions.ipynb
-            - file: part-I/10-statistical-foundations-and-ml.ipynb
+              - file: part-I/bonus-a-reproducible-data-pipelines-exercises.ipynb
+              # - file: part-I/bonus-a-reproducible-data-pipelines-solutions.ipynb
+            - file: part-I/bonus-b-defensive-programming-and-packaging.ipynb
               children:
-              - file: part-I/10-statistical-foundations-and-ml-exercises.ipynb
-              # - file: part-I/10-statistical-foundations-and-ml-solutions.ipynb
+              - file: part-I/bonus-b-defensive-programming-and-packaging-exercises.ipynb
+              # - file: part-I/bonus-b-defensive-programming-and-packaging-solutions.ipynb
 
     # # Part II: Basics of Machine Learning for Earth and Environmental Sciences
     # - file: part-II/part-II.md
