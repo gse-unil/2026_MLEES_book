@@ -60,53 +60,57 @@ project:
     # Appendix
     - file: appendix/appendix.md
       children:
-        - file: appendix/00-setup-version-control-ai-literacy.ipynb
+        - file: appendix/00-setup-version-control.ipynb
+        - file: appendix/01-terminal-commands.ipynb
+        - file: appendix/02-ssh.ipynb
+        - file: appendix/03-ai-literacy.md
 
     # Part I: Introduction to Python for Earth and Environmental Sciences
     - file: part-I/part-I.md
-    - file: part-I/ch-1-intro.md
-      title: "1) Introduction to Python for Earth and Environmental Sciences"
       children:
-        - file: part-I/01-environment-and-data-types.ipynb
+        - file: part-I/ch-1-intro.md
+          title: "1) Introduction to Python for Earth and Environmental Sciences"
           children:
-          - file: part-I/01-environment-and-data-types-exercises.ipynb
-          # - file: part-I/01-environment-and-data-types-solutions.ipynb
-        - file: part-I/02-data-structures-and-control-flow.ipynb
-          children:
-          - file: part-I/02-data-structures-and-control-flow-exercises.ipynb
-          # - file: part-I/02-data-structures-and-control-flow-solutions.ipynb
-        - file: part-I/03-numpy.ipynb
-          children:
-          - file: part-I/03-numpy-exercises.ipynb
-          # - file: part-I/03-numpy-solutions.ipynb
-        - file: part-I/04-matplotlib-and-xarray.ipynb
-          children:
-          - file: part-I/04-matplotlib-and-xarray-exercises.ipynb
-          # - file: part-I/04-matplotlib-and-xarray-solutions.ipynb
-        - file: part-I/05-pandas.ipynb
-          children:
-          - file: part-I/05-pandas-exercises.ipynb
-          # - file: part-I/05-pandas-solutions.ipynb
-        - file: part-I/06-reproducible-data-pipelines.ipynb
-          children:
-          - file: part-I/06-reproducible-data-pipelines-exercises.ipynb
-          # - file: part-I/06-reproducible-data-pipelines-solutions.ipynb
-        - file: part-I/07-oop-for-natural-systems.ipynb
-          children:
-          - file: part-I/07-oop-for-natural-systems-exercises.ipynb
-          # - file: part-I/07-oop-for-natural-systems-solutions.ipynb
-        - file: part-I/08-defensive-programming-and-packaging.ipynb
-          children:
-          - file: part-I/08-defensive-programming-and-packaging-exercises.ipynb
-          # - file: part-I/08-defensive-programming-and-packaging-solutions.ipynb
-        - file: part-I/09-geospatial-vector-data.ipynb
-          children:
-          - file: part-I/09-geospatial-vector-data-exercises.ipynb
-          # - file: part-I/09-geospatial-vector-data-solutions.ipynb
-        - file: part-I/10-statistical-foundations-and-ml.ipynb
-          children:
-          - file: part-I/10-statistical-foundations-and-ml-exercises.ipynb
-          # - file: part-I/10-statistical-foundations-and-ml-solutions.ipynb
+            - file: part-I/01-environment-and-data-types.ipynb
+              children:
+              - file: part-I/01-environment-and-data-types-exercises.ipynb
+              # - file: part-I/01-environment-and-data-types-solutions.ipynb
+            - file: part-I/02-data-structures-and-control-flow.ipynb
+              children:
+              - file: part-I/02-data-structures-and-control-flow-exercises.ipynb
+              # - file: part-I/02-data-structures-and-control-flow-solutions.ipynb
+            - file: part-I/03-numpy.ipynb
+              children:
+              - file: part-I/03-numpy-exercises.ipynb
+              # - file: part-I/03-numpy-solutions.ipynb
+            - file: part-I/04-matplotlib-and-xarray.ipynb
+              children:
+              - file: part-I/04-matplotlib-and-xarray-exercises.ipynb
+              # - file: part-I/04-matplotlib-and-xarray-solutions.ipynb
+            - file: part-I/05-pandas.ipynb
+              children:
+              - file: part-I/05-pandas-exercises.ipynb
+              # - file: part-I/05-pandas-solutions.ipynb
+            - file: part-I/06-reproducible-data-pipelines.ipynb
+              children:
+              - file: part-I/06-reproducible-data-pipelines-exercises.ipynb
+              # - file: part-I/06-reproducible-data-pipelines-solutions.ipynb
+            - file: part-I/07-oop-for-natural-systems.ipynb
+              children:
+              - file: part-I/07-oop-for-natural-systems-exercises.ipynb
+              # - file: part-I/07-oop-for-natural-systems-solutions.ipynb
+            - file: part-I/08-defensive-programming-and-packaging.ipynb
+              children:
+              - file: part-I/08-defensive-programming-and-packaging-exercises.ipynb
+              # - file: part-I/08-defensive-programming-and-packaging-solutions.ipynb
+            - file: part-I/09-geospatial-vector-data.ipynb
+              children:
+              - file: part-I/09-geospatial-vector-data-exercises.ipynb
+              # - file: part-I/09-geospatial-vector-data-solutions.ipynb
+            - file: part-I/10-statistical-foundations-and-ml.ipynb
+              children:
+              - file: part-I/10-statistical-foundations-and-ml-exercises.ipynb
+              # - file: part-I/10-statistical-foundations-and-ml-solutions.ipynb
 
     # # Part II: Basics of Machine Learning for Earth and Environmental Sciences
     # - file: part-II/part-II.md
