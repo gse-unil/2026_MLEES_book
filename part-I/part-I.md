@@ -2,5 +2,18 @@
 
 ## Introduction
 
+Part I builds the programming foundation the rest of this book assumes: from a first script to a first machine-learning model, entirely in Python, entirely grounded in earth and environmental data. It assumes no prior programming experience and ends somewhere genuinely useful — fitting, evaluating, and honestly reporting a model against real observations.
+
+The ten subchapters follow one arc. 1.1–1.2 cover the language itself: types, control flow, functions, and the containers everything else is built from. 1.3–1.5 add the scientific stack — numpy for arrays, matplotlib and xarray for visualizing and labelling gridded data, pandas for tabular data. 1.6–1.8 step back from any one library to cover the habits that make code trustworthy: reproducible data pipelines, object-oriented design for representing physical systems, and defensive programming with tests. 1.9 and 1.10 close the part with geospatial vector data and a first pass at statistics and machine learning, ending exactly where the rest of the book picks up.
+
+Each subchapter pairs a notebook of core material with a matching exercises notebook. The core material works with synthetic data built to look like the real thing — a station network, a weather grid, a species catalogue — so the mechanics stay visible without a real dataset's mess getting in the way; the exercises then apply the same tools to genuine, occasionally messy, environmental and geoscientific data: earthquake catalogues, hurricane tracks, penguin measurements, a century of temperature records.
+
 ## Pedagogical philosophy
-% Philosophical take on learning Python, kind of manifesto for this part of the book.
+
+This part treats programming as a skill built by handling real quantities, not by memorising syntax in the abstract. Every example carries a physical unit and a plausible origin — a temperature in kelvin, a discharge in cubic metres per second, a coordinate in a named reference system — because code that never touches a unit teaches habits that break on the first real dataset.
+
+Nothing here is used before it has been introduced. A construct that appears in an exercise has already appeared, working, in the material that precedes it; a going-deeper box exists for anyone who wants more, but skipping every one of them still leaves a complete, working path through. Depth is optional; the core is not.
+
+Every subchapter also stops, once, to look at code that runs cleanly and returns a wrong answer — a shared mutable default, a unit silently assumed, a training score mistaken for performance. These are not contrived: they are the errors an AI assistant plausibly produces, because they are also the errors a careless human produces. Reading a bug that looks right is more instructive than being told a rule, and it is the same skill, applied early, that keeps a generated-code habit safe later: understand it, test it, question it, before trusting it.
+
+None of this is anti-AI. An assistant that writes syntactically correct, contextually plausible, occasionally wrong code is a fair description of the tool as it exists — and also, not coincidentally, of a diligent but unsupervised collaborator. The two habits that make either safe are the same: read every line before running it, and state constraints — units, ranges, edge cases — explicitly enough that nothing is left to guess.
