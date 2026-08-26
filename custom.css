@@ -10,3 +10,30 @@
     display: none !important;
     content: "";
 }
+
+/* Sidebar TOC: bold section/chapter-level entries, light grey only for entries nested
+   two levels deep (true subchapter pages). MyST's book-theme sidebar gives every depth
+   the same .myst-toc-item class; nesting is only expressed structurally via
+   .collapsible-content wrappers, so depth has to be targeted that way rather than
+   through a dedicated class. A single level of nesting (e.g. appendix's flat list of
+   pages under "Setup and reference", or a Part's chapters) reads the same as the
+   top level; only a second level of nesting (e.g. 1.1, 1.2, ... under a chapter) grey. */
+.myst-toc-item {
+    font-weight: 600;
+}
+
+.collapsible-content .collapsible-content .myst-toc-item {
+    font-weight: 400;
+    color: #52525b;
+}
+
+.dark .collapsible-content .collapsible-content .myst-toc-item {
+    color: #d4d4d8;
+}
+
+/* Keep the current page fully legible regardless of nesting depth */
+.myst-toc-item.active,
+.collapsible-content .collapsible-content a.active {
+    font-weight: 700 !important;
+    color: inherit !important;
+}
