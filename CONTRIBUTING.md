@@ -2,7 +2,6 @@
 % TODO: add different platforms not only MacOS
 % TODO: add policy for data (smaller than 50MB can stay in the data/ otherwise zenodo.)
 % TODO: add policy for drafts in drafts/
-% TODO: add policy for images, put them always in _static/, while put files created by the notebooks in _files/
 
 # Contributing to the MLEES book
 
@@ -111,14 +110,21 @@ The book's structure lives in the `toc` block of `myst.yml`, not in the folder l
 project:
   toc:
     - file: index.md
-    - title: Part I — Scientific Python
+    - file: part-I/part-I.md
       children:
-        - file: ip/01-variables.ipynb
-        - file: ip/02-numpy.ipynb
-        - file: ip/03-xarray.ipynb   # <- your new page
+        - file: part-I/ch-1-intro.md
+          children:
+            - file: part-I/1.1-environment-and-data-types.ipynb
+            - file: part-I/1.2-data-structures-and-control-flow.ipynb
+            - file: part-I/1.3-numpy.ipynb   # <- your new page
 ```
 
-Note that MyST generates clean URLs: a numeric prefix like `03-xarray.ipynb` is served at `/xarray`, and underscores become hyphens. **Do not hand-write Colab badges or internal links against raw file paths** — they break when files move or are renamed. Construct links from the page slug, or use the project-level badge mechanism so a rename can't orphan them. (Hand-written badges pointing at the wrong path were a recurring failure in the previous edition; we are avoiding that by construction.)
+Filenames follow a `{chapter}.{subchapter}-slug.ipynb` prefix (`1.1-`, `2.3-`, ...), matching the
+subchapter's own number, with `-exercises`/`-solutions` suffixes for the paired notebooks.
+**Do not hand-write Colab badges or internal links against raw file paths** — they break when
+files move or are renamed. Construct links from the page slug, or use the project-level badge
+mechanism so a rename can't orphan them. (Hand-written badges pointing at the wrong path were a
+recurring failure in the previous edition; we are avoiding that by construction.)
 
 ---
 
@@ -144,6 +150,8 @@ These keep the book coherent across many authors.
 **Units and notation.** Use SI units. Keep mathematical notation consistent with the field and preserve case-specific meaning of symbols. Label equations, figures, and tables so they can be cross-referenced with MyST's `[](#label)` syntax.
 
 **Code.** Python is the language of the book; deep-learning content uses **PyTorch** (the book is migrating off Keras/TensorFlow — new contributions should be PyTorch). Write minimal, readable code with concise comments. Follow standard style (PEP 8); a formatter such as `ruff` is recommended.
+
+**Static assets vs. generated output.** Each part keeps two separate local folders, both named consistently across `part-I/`, `part-II/`, etc.: images and other assets you author or source yourself (figures, diagrams, downloaded reference images) go in that part's `_static/`, referenced with a relative path or a `{figure}` directive; anything a notebook writes when it runs (saved plots, cached intermediate files) goes in that part's `_files/`, which is git-ignored — never commit generated output.
 
 **Citations.** Only cite work that genuinely exists, and verify the title, authors, year, and DOI before adding it. Put references in `references.bib` and cite inline with `[@key]`; MyST builds the bibliography automatically. Every reference should carry a DOI or a stable URL. When unsure a citation is correct, leave it out and flag the gap rather than guessing.
 
