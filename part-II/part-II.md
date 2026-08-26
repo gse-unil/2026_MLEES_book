@@ -20,4 +20,5 @@ is built on. Exercises adapt notebooks from Géron's *Hands-On Machine Learning 
 and, for the statistical-forecasting material, Wilks' *Statistical Methods in the Atmospheric
 Sciences*, applied throughout to real environmental datasets: handwritten digits, Titanic
 passenger records, Palmer Archipelago penguins, Ecuadorian pressure and temperature readings, and
-El Niño years.
+El Niño years. Chapter 3 closes with a real environmental risk-mapping application: wildfire
+susceptibility in the Liguria region of Italy, adapted from Tonini et al. and Trucchia et al.

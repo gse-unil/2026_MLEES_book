@@ -132,10 +132,20 @@ project:
             - file: part-II/2.5-statistical-forecasting-exercises.ipynb
               title: "2.5) (Exercises) Statistical Forecasting"
 
-    # - title: "3) Basics of Machine Learning for Earth and Environmental Sciences"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
+        - file: part-II/ch-3-intro.md
+          title: "3) Decision Trees, Random Forests, Support Vector Machines and Environmental Risk Analysis"
+          children:
+            - file: part-II/3.1-simple-machine-learning-algorithms.ipynb
+              title: "3.1) Basic Machine Learning Algorithms for Classification Tasks"
+            - file: part-II/3.2-svm-exercises.ipynb
+              title: "3.2) (Exercises) Support Vector Machines"
+            - file: part-II/3.3-decision-trees-and-random-forest-exercises.ipynb
+              title: "3.3) (Exercises) Decision Trees and Random Forest"
+            - file: part-II/3.4-ensemble-modeling-and-stacking-exercises.ipynb
+              title: "3.4) (Exercises) Ensemble Modeling and Stacking"
+            - file: part-II/3.5-wildfire-susceptibility-mapping-exercises.ipynb
+              title: "3.5) (Exercises) Wildfire Susceptibility Mapping"
+
     # - title: "4) Unsupervised Learning (Clustering, Dimensionality Reduction) and Environmental Complexity"
     #   children:
     #     - file: part-I/01-python-fundamentals.ipynb
