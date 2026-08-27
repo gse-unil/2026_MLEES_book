@@ -74,5 +74,5 @@ an open educational resource. See the
 [repository](https://github.com/gse-unil/2026_MLEES_book) for license, citation,
 and acknowledgements.*
 
-### Authors:
+## Authors
 Tom Beucler, Milton Gomez, Frederick Iat-Hin Tam, Jingyan Yu, Saranya Ganesh S., Haokun Liu, Kejdi LLeshi, Shivanshi Ashtana, Ayoub Fatihi, Filippo Quarenghi

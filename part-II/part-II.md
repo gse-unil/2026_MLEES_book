@@ -22,3 +22,5 @@ Sciences*, applied throughout to real environmental datasets: handwritten digits
 passenger records, Palmer Archipelago penguins, Ecuadorian pressure and temperature readings, and
 El Niño years. Chapter 3 closes with a real environmental risk-mapping application: wildfire
 susceptibility in the Liguria region of Italy, adapted from Tonini et al. and Trucchia et al.
+Chapter 4 closes similarly, clustering reduced-dimensionality ECCO ocean-model output to identify
+dynamical regimes in the North Atlantic, following Sonnewald et al.'s THOR method.

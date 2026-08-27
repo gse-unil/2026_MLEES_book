@@ -146,10 +146,17 @@ project:
             - file: part-II/3.5-wildfire-susceptibility-mapping-exercises.ipynb
               title: "3.5) (Exercises) Wildfire Susceptibility Mapping"
 
-    # - title: "4) Unsupervised Learning (Clustering, Dimensionality Reduction) and Environmental Complexity"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
+        - file: part-II/ch-4-intro.md
+          title: "4) Unsupervised Learning (Clustering, Dimensionality Reduction) and Environmental Complexity"
+          children:
+            - file: part-II/4.1-unsupervised-learning-for-clustering-and-dimensionality-reduction.ipynb
+              title: "4.1) Unsupervised Learning for Clustering and Dimensionality Reduction"
+            - file: part-II/4.2-dimensionality-reduction-exercises.ipynb
+              title: "4.2) (Exercises) Dimensionality Reduction"
+            - file: part-II/4.3-clustering-exercises.ipynb
+              title: "4.3) (Exercises) Clustering"
+            - file: part-II/4.4-ocean-regimes-identification-exercises.ipynb
+              title: "4.4) (Exercises) Ocean Regimes Identification"
 
     # # Part III: Basics of Machine Learning for Earth and Environmental Sciences
     # - file: part-III/part-III.md
