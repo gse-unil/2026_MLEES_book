@@ -1,6 +1,5 @@
 % TODO: check for errors in the text
 % TODO: add different platforms not only MacOS
-% TODO: add policy for data (smaller than 50MB can stay in the data/ otherwise zenodo.)
 % TODO: add policy for drafts in drafts/
 
 # Contributing to the MLEES book
@@ -130,12 +129,39 @@ recurring failure in the previous edition; we are avoiding that by construction.
 
 ## 7. Data handling
 
-The book deals with gridded geoscientific data, which is large. Keep it out of git.
+**Datasets are committed to the repository, then fetched through `pooch`.** This is the opposite
+of "keep data out of git": every real dataset a notebook depends on — a CSV, a pickle, a small
+netCDF, a zipped bundle of `.npy` arrays — gets a verified snapshot committed to `data/<part>/`
+(one subfolder per part, e.g. `data/part-I/`, `data/part-II/`), then the notebook fetches *that*
+copy at runtime with [`pooch`](https://www.fatiando.org/pooch/):
 
-- **Do not commit datasets**, model checkpoints, or large binaries. The repository holds code and prose only.
-- **Prefer cloud-native reads.** For reanalysis and gridded fields, read analysis-ready cloud-optimized data directly with `xarray` rather than downloading files, e.g. the public ARCO-ERA5 zarr store on Google Cloud. Subset *before* calling `.load()`/`.compute()`.
-- **For small static files** (a CSV or a small netCDF used in an exercise), fetch them at runtime from a pinned, versioned URL — ideally with [`pooch`](https://www.fatiando.org/pooch/), which caches and hash-verifies the download — rather than committing them or using interactive uploads.
-- Avoid `files.upload()` and Google Drive mounts in notebooks; they are not reproducible for a reader who isn't you.
+```python
+import pooch
+
+path = pooch.retrieve(
+    url="https://raw.githubusercontent.com/gse-unil/2026_MLEES_book/main/data/part-II/your_file.csv",
+    known_hash="sha256:...",
+    fname="your_file.csv",
+    path=pooch.os_cache("mlees"),
+)
+```
+
+This holds regardless of file size, down to a 15 KB CSV — "small enough to just leave inline" is
+never the right call. The point is a snapshot under this repo's own control, not a bare
+third-party URL: those move, expire, or (a recurring trap) turn out to sit behind a login —
+a SharePoint/OneDrive personal-share link can return HTTP 200 with an HTML sign-in page as the
+body, so verify a fetched file by its actual content (row counts, a shape or value the notebook
+itself asserts), not by status code alone. Never invent a hash or leave a placeholder — if a
+source is inaccessible, say so and ask for the file rather than guessing a replacement.
+
+**Exception: datasets larger than 50 MB.** Stop before committing and flag it instead — the file,
+its size, and how you'd like to proceed (a smaller/subsetted cut, git-lfs, cloud-native reads
+against an existing public zarr/COG store for reanalysis-scale gridded fields, or an explicit
+go-ahead to commit it as-is). The repository has no git-lfs configured today; treat committing
+anything near or above that threshold as a judgment call, not a default.
+
+- Avoid `files.upload()` and Google Drive mounts in notebooks; they are not reproducible for a
+  reader who isn't you.
 
 ---
 
@@ -163,7 +189,8 @@ A short checklist:
 
 - [ ] The book builds locally: `uv run jupyter book build --html` succeeds.
 - [ ] Any notebook you touched runs clean from a restarted kernel, and is committed with its outputs.
-- [ ] No large data files, no `_build/`, no stray checkpoints are staged (`git status` is clean of these).
+- [ ] Any dataset you added is a verified, hash-pinned snapshot in `data/<part>/`, fetched via `pooch` (§7) — not a bare third-party URL, and not committed unprompted if over 50 MB.
+- [ ] No `_build/`, no stray checkpoints, no notebook-generated output (`_files/`) are staged (`git status` is clean of these).
 - [ ] New pages are added to the `toc` in `myst.yml`.
 - [ ] New citations are in `references.bib` with a DOI/URL.
 - [ ] Links and badges resolve (CI runs a link check; you can run `uv run jupyter book build --check-links --strict` locally).
