@@ -1,6 +1,6 @@
 # Chapter 1: Introduction to Python for Earth and Environmental Sciences
 
-This is the first chapter of the book; it covers the following subchapters. Two further subchapters, held back as optional self-study material, live in the [Bonus material](bonus.md) section after this chapter.
+This is the first chapter of the book; it covers the following subchapters. One further subchapter, held back as optional self-study material, lives in the [Bonus material](bonus.md) section after this chapter.
 
 ::::{grid} 1 1 2 2
 
@@ -46,10 +46,10 @@ Points, lines, and polygons with geopandas: projections, joins, and measuring co
 
 :::
 
-:::{card} 1.7) Object-oriented programming for natural systems
-:link: 1.7-oop-for-natural-systems.ipynb
+:::{card} 1.7) Object-oriented and defensive programming for environmental systems
+:link: 1.7-oop-for-environmental-systems.ipynb
 
-Bundling state and behaviour into classes, for data that carries its own operations.
+Bundling state and behaviour into classes, then reading and trusting code you didn't write — assertions, exceptions, logging, and tests.
 
 :::
 
@@ -101,10 +101,11 @@ Every subchapter above ends with its own short reading list, pointing at the spe
 - [GeoPandas — Managing projections](https://geopandas.org/en/stable/docs/user_guide/projections.html) — setting and transforming coordinate reference systems. (1.6)
 - [GeoPandas basics: maps, projections, and spatial joins](https://realpython.com/geopandas/) — a worked introduction to GeoDataFrames and spatial joins. (1.6)
 
-### Object-oriented Python
+### Object-oriented and defensive programming
 
 - [Object-Oriented Programming (OOP) in Python](https://realpython.com/python3-object-oriented-programming/) — classes, instances, attributes, methods, inheritance. (1.7)
 - [Python Classes: The Power of Object-Oriented Programming](https://realpython.com/python-classes/) — instance vs. class attributes, dataclasses, and when *not* to use a class. (1.7)
+- [pytest documentation](https://docs.pytest.org/en/stable/) — writing tests, fixtures, parametrisation. (1.7)
 
 ### Machine learning and statistical graphics
 
@@ -116,8 +117,7 @@ Every subchapter above ends with its own short reading list, pointing at the spe
 ### Reproducibility and tooling
 
 - [Project Pythia Foundations](https://foundations.projectpythia.org/) — geoscience-flavoured tutorials across the whole scientific-python stack; a natural next step after this part. (1.1)
+- [uv documentation](https://docs.astral.sh/uv/) — project creation, the src layout, dependency management. (Bonus A)
+- [Ruff documentation](https://docs.astral.sh/ruff/) — the linter and formatter used in Bonus A's going-deeper boxes. (Bonus A)
 - [pooch documentation](https://www.fatiando.org/pooch/latest/) — retrieving single files, registries, hashing, DOI downloads. (Bonus A)
 - [Earth and Environmental Data Science — All About Data](https://earth-env-data-science.github.io/lectures/data.html) — Abernathey and Key on fetching remote data, Zenodo DOIs, FAIR practice. (Bonus A)
-- [pytest documentation](https://docs.pytest.org/en/stable/) — writing tests, fixtures, parametrisation. (Bonus B)
-- [uv documentation](https://docs.astral.sh/uv/) — project creation, the src layout, dependency management. (Bonus B)
-- [Ruff documentation](https://docs.astral.sh/ruff/) — the linter and formatter used in Bonus B's going-deeper boxes. (Bonus B)

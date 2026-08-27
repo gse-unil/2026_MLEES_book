@@ -95,10 +95,10 @@ project:
               children:
               - file: part-I/1.6-geospatial-vector-data-exercises.ipynb
               # - file: part-I/1.6-geospatial-vector-data-solutions.ipynb
-            - file: part-I/1.7-oop-for-natural-systems.ipynb
+            - file: part-I/1.7-oop-for-environmental-systems.ipynb
               children:
-              - file: part-I/1.7-oop-for-natural-systems-exercises.ipynb
-              # - file: part-I/1.7-oop-for-natural-systems-solutions.ipynb
+              - file: part-I/1.7-oop-for-environmental-systems-exercises.ipynb
+              # - file: part-I/1.7-oop-for-environmental-systems-solutions.ipynb
             - file: part-I/1.8-statistical-foundations-and-ml.ipynb
               children:
               - file: part-I/1.8-statistical-foundations-and-ml-exercises.ipynb
@@ -110,10 +110,6 @@ project:
               children:
               - file: part-I/bonus-a-reproducible-data-pipelines-exercises.ipynb
               # - file: part-I/bonus-a-reproducible-data-pipelines-solutions.ipynb
-            - file: part-I/bonus-b-defensive-programming-and-packaging.ipynb
-              children:
-              - file: part-I/bonus-b-defensive-programming-and-packaging-exercises.ipynb
-              # - file: part-I/bonus-b-defensive-programming-and-packaging-solutions.ipynb
 
     # Part II: Basics of Machine Learning for Earth and Environmental Sciences
     - file: part-II/part-II.md
