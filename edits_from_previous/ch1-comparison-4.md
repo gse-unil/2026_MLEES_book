@@ -16,7 +16,7 @@ old subchapter (1.7.13); it is co-equal, core content in the new one.
 | 1.7.6.1 Line Styles | Dashed, dotted, dashdot | **Restored, core.** New 1.4 has a dedicated "Line styles, colors, and markers" subsection right after the first line plot, with a worked reference plot showing all four (`-`, `--`, `:`, `-.`). |
 | 1.7.6.2 Colors | Named colors, grayscale, RGB tuples, hex, default color cycles | **Restored, core** — named colors and matplotlib's `tab:` cycle are used in the same new subsection; grayscale, raw RGB tuples, and hex codes are mentioned in prose but not individually demonstrated in a code cell. |
 | 1.7.6.3 Markers | Size, edge properties | **Restored, core** — `marker=` (and `linestyle="none"` to show markers alone) is demonstrated; size/edge-property customization (`markersize`, `markeredgecolor`, etc.) is not individually demonstrated. |
-| 1.7.6.4 Label, Ticks, and Gridlines | Tick positioning/labels, grid display | **Mostly dropped** — one exception: cartopy's `.gridlines(draw_labels=True)` now appears in new 1.4's going-deeper box, but that's map-specific; ordinary matplotlib tick/gridline control isn't covered. |
+| 1.7.6.4 Label, Ticks, and Gridlines | Tick positioning/labels, grid display | **Mostly dropped** — one exception: cartopy's `.gridlines(draw_labels=True)` is now core, live content in new 1.4 ("Useful GeoAxes Methods" and "Regional Maps"), but that's map-specific; ordinary matplotlib tick/gridline control still isn't covered. |
 | 1.7.6.5 Axis Limits | Custom axis ranges | **Dropped.** |
 | 1.7.6.6 Text Annotations | Text and annotated arrows | **Dropped.** |
 | 1.7.6.7 Scatter Plots | Color mapping, size variation | **Kept**, simplified — new 1.4's scatter example uses a single fixed color/size, not the color/size-mapping depth of old. |
@@ -26,16 +26,16 @@ old subchapter (1.7.13); it is co-equal, core content in the new one.
 | 1.7.7.3 2D Plotting — contour/contourf | Contour lines and filled contours | **Kept** (`contourf` confirmed; plain `contour` not individually confirmed). |
 | 1.7.7.4 2D Plotting — quiver | Vector field arrows | **Dropped.** |
 | 1.7.7.5 2D Plotting — streamplot | Streamline visualization | **Dropped.** |
-| 1.7.8 Cartopy (intro) | Geographic visualization library overview | **Kept**, much reduced — see rows below. |
+| 1.7.8 Cartopy (intro) | Geographic visualization library overview | **Kept** — see rows below; no longer "much reduced" as of the cartopy expansion (below). |
 | 1.7.9 Background: Projections | Foundational projection concepts | **Reduced** to the one-line framing "a projection turns a round Earth into a flat axes" in new 1.4's live cartopy section. |
 | 1.7.10.1 Cartopy Projections and Reference Systems | Specifying a projection | **Kept** — new 1.4's live section uses `ccrs.PlateCarree()` and `ccrs.Orthographic()`, with `transform=` explained. |
 | 1.7.10.2 Drawing a Map | Basic map creation | **Kept.** |
-| 1.7.10.3 Useful Methods of GeoAxes | `GeoAxes`-specific methods | **Reduced** to `.coastlines()` live, plus `.set_extent()`/`.add_feature()`/`.gridlines()` in a going-deeper box. |
-| 1.7.10.4 Global Projections | Multiple global projection examples | **Reduced** to one projection change (`Orthographic`) as a live demonstration; the old tutorial's broader tour of global projections isn't reproduced. |
-| 1.7.10.5 Regional Maps | Localized geographic views | **Reduced** to the `set_extent` going-deeper mention; no dedicated regional-map example. |
+| 1.7.10.3 Useful Methods of GeoAxes | `set_global`, `set_extent`, `gridlines`, `coastlines`, `stock_img`, `imshow`, `add_geometries` | **Restored, core.** New 1.4 now has a dedicated "Useful GeoAxes Methods" section (live `set_global()` + `stock_img()` + `gridlines(draw_labels=True)`, on top of the `.coastlines()` already live elsewhere) — promoted out of the going-deeper box it sat in before. `add_geometries`/raw `imshow` on a GeoAxes remain unconfirmed. |
+| 1.7.10.4 Global Projections | Multiple global projection examples (`PlateCarree`, `Robinson`, `Mercator`, `Orthographic`, `InterruptedGoodeHomolosine`) | **Restored, core.** New 1.4 has "A Tour of Global Projections": the same real `t2m` field plotted into `PlateCarree`, `Robinson`, `Mercator`, and `Orthographic` in one 2×2 figure. `InterruptedGoodeHomolosine` not reproduced. |
+| 1.7.10.5 Regional Maps | Localized geographic views via `set_extent` | **Restored, core.** New 1.4 has a dedicated "Regional Maps" section: the real field zoomed to the Swiss domain (`set_extent([5.5, 10.5, 45.5, 48.0], crs=ccrs.PlateCarree())`) with gridlines and 50m coastlines — no longer just a going-deeper mention. |
 | 1.7.11 Adding Features to the Map | Coastlines, borders | **Kept**, `.coastlines()` live, `add_feature(BORDERS)` in going-deeper. |
 | 1.7.12.1 Plotting 2D (Raster) Data on a Map | Gridded data over a map | **Kept** — this is exactly new 1.4's live cartopy demo (`ds["t2m"].mean("time").plot(ax=ax, transform=...)`). |
-| 1.7.12.2 Showing Images on a Map | Imagery display | **Dropped** — not confirmed in new 1.4. |
+| 1.7.12.2 Showing Images on a Map | Imagery display | **Dropped, deliberately.** The old tutorial's own satellite image is fetched from a dead SharePoint link — same dead-link pattern hit repeatedly elsewhere in this book's data. Not restored without a real image to point at. |
 | 1.7.13 Bonus: Xarray Integration | Brief xarray + cartopy mention, appendix-level | **Promoted to core**, and much expanded — see xarray rows below. Old 1.7.13 was a short bonus; new 1.4 gives xarray roughly half the subchapter. |
 | 1.7.14 Doing More | Additional resources | **Kept** in spirit as new 1.4's Resources section. |
 | *(no confirmed old equivalent)* | Saving figures | **Expanded.** New 1.4 gives vector-vs-raster saving (`.svg`/`.pdf` vs. `.png`) its own explicit section with a `pathlib.Path.glob` confirmation step — the old tutorial doesn't call this out as a distinct topic. |
@@ -53,6 +53,6 @@ old subchapter (1.7.13); it is co-equal, core content in the new one.
 - The explicit vector-vs-raster figure-saving section.
 
 Every exercise (1–9) is blank with a matching worked solution in a separate
-`04-matplotlib-and-xarray-solutions.ipynb`. Exercises 1–8 use synthetic data; Exercise 9 (NASA
+`1.4-matplotlib-and-xarray-solutions.ipynb`. Exercises 1–8 use synthetic data; Exercise 9 (NASA
 GISTEMP) and Exercise 10 (Antarctic sea ice) use real data — Exercise 10 has no solution
 provided, matching the book's capstone-exercise convention.

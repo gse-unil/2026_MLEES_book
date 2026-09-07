@@ -1,4 +1,15 @@
-# Final audit
+# Final audit (superseded — see note)
+
+**Superseded.** This audit was written against the same 10-subchapter, `01-`/`02-`… numbered
+structure as `course-plan.md` (see that file's note) — file names like
+`01-environment-and-data-types-exercises.ipynb` and subchapter numbers like "1.10" for what is
+today's 1.8 predate the later consolidation to 8 subchapters + Bonus A. See CLAUDE.md's "Current
+state" for the authoritative picture. Kept as a historical record of the specific bugs it found
+and fixed (the k-means/PCA regression, 1.9→1.6's content-after-critique reorder, leaked answer
+cells in 01/02, exercise-heading standardization) — those fixes are real and still in effect,
+just described under since-renamed files and numbers. A separate, independent pre-launch review
+(see the `ch1-comparison-N.md` files and `todo-list.md`) has since re-audited all of 1.1–1.8 plus
+Bonus A against today's actual structure and found its own, different set of issues.
 
 A full pass over all 10 subchapters (lectures, exercises, solutions), the appendix, and myst.yml,
 checking for content correctness, cross-file consistency, structural flow, and mistakes. Fixed

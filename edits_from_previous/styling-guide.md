@@ -1,8 +1,12 @@
 # Styling guide, derived from Part I (1.1 and 1.2)
 
-Working notes, not published content. Extracted directly from
-[01-environment-and-data-types.ipynb](../part-I/01-environment-and-data-types.ipynb) and
-[02-data-structures-and-control-flow.ipynb](../part-I/02-data-structures-and-control-flow.ipynb),
+Working notes, not published content. Updated during the pre-launch Part I review to fix stale
+filenames and a few claims the review itself made no-longer-true (the missing exercises intro
+box, the one unbolded going-deeper title, sentence-case H2s) — noted inline below rather than
+silently rewritten, so the "as originally found" vs. "as fixed" distinction stays visible.
+Extracted directly from
+[1.1-environment-and-data-types.ipynb](../part-I/1.1-environment-and-data-types.ipynb) and
+[1.2-data-structures-and-control-flow.ipynb](../part-I/1.2-data-structures-and-control-flow.ipynb),
 plus their paired `-exercises.ipynb` files. Purpose: a single reference for applying Part I's
 visual system to ported material, starting with Part II chapter 2.
 
@@ -12,10 +16,18 @@ visual system to ported material, starting with Part II chapter 2.
   Types, Operators and File I/O`, `# 1.2) Data Structures and Control Flow`. The `)` after the
   number, not a `.`.
 - **Section headers (H2):** `## {chapter}.{subchapter}.{section} {Title}` — e.g.
-  `## 1.1.1 Variables and the core scalar types`, `## 1.2.3 Functions`. Sections number
+  `## 1.1.1 Variables and the Core Scalar Types`, `## 1.2.3 Functions`. Sections number
   sequentially through the notebook; sub-sections under a numbered H2 use plain `### Title` with
   no number (e.g. `### Lists`, `### Tuples`, `### Dictionaries` all sit under `## 1.2.1 Data
-  Structures` unnumbered).
+  Structures` unnumbered, and are not re-cased — only numbered H2s follow the rule below).
+- **H2 title casing is Title Case**, book-wide as of the pre-launch Part I review (1.1 and 1.2
+  originally used sentence case for some sections — e.g. `## 1.1.1 Variables and the core scalar
+  types` — inconsistently with 1.5–1.8, which were already Title Case; standardized to Title Case
+  everywhere). Library/method/type names stay in their real lowercase spelling even as the first
+  word of a title (`## pooch: Download Once, Verify Always`, `## The scikit-learn Estimator
+  Interface`) — the same "numpy/xarray/git stay lowercase, including sentence-initial" rule
+  CLAUDE.md's Style section states, extended consistently to every technical term, not just the
+  two CLAUDE.md names by example.
 - **Fixed-role headers carry no number:** the AI-critique header, `## Summary` (1.1 only),
   `## Resources`. These are structural landmarks that repeat by name across every subchapter, not
   content sections, so they stay out of the numbering sequence.
@@ -54,16 +66,21 @@ Fixed order, confirmed identical in both 1.1 and 1.2:
 
 ## Page structure (exercises notebook)
 
-Looser, and — as actually written in 1.1 and 1.2, not as CLAUDE.md's abstract description of the
-convention — simpler than the lecture:
+**Updated during the pre-launch Part I review**: 1.3–1.8 all open with a
+`:::{admonition} How to use these exercises` note box (`:class: note`) right after the `#
+Exercises` title — content tailored per subchapter (which libraries to import, what convention to
+follow), but the same fixed slot every time. 1.1 and 1.2 were originally missing this box; it was
+retrofitted to both to match every other subchapter, closing what turned out to be a real gap,
+not a deliberate omission.
 
-1. **`# Exercises`** title, no intro note box in either 1.1 or 1.2 (CLAUDE.md describes one; the
-   files on disk don't have it — flagging the mismatch rather than silently picking one).
+1. **`# Exercises`** title, then the "How to use these exercises" note box (see above).
 2. **`## Exercise {n}: {short name}`**, prompt paragraph(s), optionally a fenced code block or
    table if the exercise needs given data.
 3. **Empty code cell, `# Your solution here`** immediately below. No inline solution dropdown in
-   either file — separate `-solutions.ipynb` files exist on disk but are commented out of
-   `myst.yml`'s `toc`, so they aren't currently wired into the built book.
+   any subchapter — separate `-solutions.ipynb` files exist on disk but are commented out of
+   `myst.yml`'s `toc`, so they aren't currently wired into the built book (flagged in
+   `todo-list.md` as a launch decision: publish them, keep them instructor-only, or something
+   else).
 4. The long, real-dataset exercise at the end (1.1's Exercise 8) is flagged as multi-step
    (`**Step 1.** … **Step 2.** …`), pulls its data through `pooch.retrieve` with a `known_hash`,
    and ends `### To be continued (see next Exercises) ...` rather than being fully self-contained
@@ -71,9 +88,10 @@ convention — simpler than the lecture:
 
 ## Connections between pages
 
-- Every subchapter is a **pair**: `{n}-{slug}.ipynb` (lecture) +
-  `{n}-{slug}-exercises.ipynb` (exercises), nested as `children:` under the lecture file in
-  `myst.yml`'s `toc`. A `-solutions.ipynb` sibling exists per pair but is commented out.
+- Every subchapter is a **pair**: `{chapter}.{subchapter}-slug.ipynb` (lecture) +
+  `{chapter}.{subchapter}-slug-exercises.ipynb` (exercises), nested as `children:` under the
+  lecture file in `myst.yml`'s `toc`. A `-solutions.ipynb` sibling exists per pair but is
+  commented out.
 - Cross-references between subchapters are prose, not links: 1.2 tells the reader "the same
   slicing syntax will return on lists in the next subchapter and on arrays in 1.3" and "this is
   the idea behind the NaN-aware operations you will meet in the next subchapter" — forward
@@ -107,7 +125,7 @@ Dropdown variant adds `dropdown` to the class list (`:class: seealso dropdown`,
 | Learning objectives | `tip` | `**Learning objectives**` |
 | Takeaways | `danger` | `**Takeaways**` |
 | Computational-thinking fundamental (max one per subchapter) | `important` | `**Computational-thinking fundamental: {specific insight}**` |
-| Going deeper (optional depth) | `seealso dropdown` | `**Going deeper: {topic}**` (or, once, plain `Going deeper: docstrings` without bold) |
+| Going deeper (optional depth) | `seealso dropdown` | `**Going deeper: {topic}**` — bolded everywhere as of the pre-launch review (one holdout, `Going deeper: docstrings` in 1.2, was found unbolded and fixed) |
 | Code pitfalls, AI-critique diagnoses | `warning` | `**Diagnosis: {short name}**`, `**Common mistake**: {rule}`, `Rules for naming a variable:` |
 | General asides, definitions | `note` | `Before you start`, `**`{range()}` method**`, `**The key fact about file input**` |
 | Solutions | `note dropdown` | not yet used in 1.1/1.2 exercises (see above) |

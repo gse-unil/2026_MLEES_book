@@ -1,8 +1,18 @@
-# Comparison: Bonus B Defensive Programming and Packaging
+# Comparison: Bonus B Defensive Programming and Packaging (superseded — see note)
+
+**This subchapter no longer exists as a standalone file.** Bonus B was merged rather than shipped
+on its own: the defensive-programming half (assert/exceptions/logging/pytest, and the
+`assert`-under-`-O` AI-critique below) moved onto the bottom of 1.7, which was retitled
+"Object-Oriented and Defensive Programming" — see `ch1-comparison-7.md`'s scope note. The
+packaging half (`uv`, the `src` layout, and the four going-deeper boxes on Ruff/typing/CI/semver)
+moved on again into Bonus A, retitled "Reproducible Code and Data Pipelines" — see
+`ch1-comparison-bonus-a.md`. This file is kept as a record of what the content *was* before that
+split, not of where it lives now; the table below still accurately describes each piece of
+content, just not its current location or file name.
 
 No old counterpart, so there's no old-book spine to build a table from — testing, logging,
 packaging, and the assert-vs-exception distinction are not topics in any old session. This
-subchapter (`bonus-b-defensive-programming-and-packaging.ipynb`) is entirely new material.
+material (originally `bonus-b-defensive-programming-and-packaging.ipynb`) was entirely new.
 
 ## What's here (all new, no old-book mapping)
 
@@ -20,8 +30,8 @@ subchapter (`bonus-b-defensive-programming-and-packaging.ipynb`) is entirely new
 
 Exercises: 7 exercises (an invariant with assert, a custom exception, try/except/else/finally,
 validate preconditions, logging with levels, write and run a pytest suite, replace assert-based
-validation), each blank with a matching worked solution in a separate
-`bonus-b-defensive-programming-and-packaging-solutions.ipynb`.
+validation) were appended onto 1.7's own exercises (renumbered as Exercises 8–14) rather than
+kept in a separate solutions file — see `ch1-comparison-7.md`.
 
 ## Why this subchapter exists
 
@@ -32,9 +42,8 @@ curriculum. The `assert`-under-`-O` AI-critique — a bug that is invisible unti
 optimised mode — is, like every AI-critique in this book, a new device with no old-book
 equivalent.
 
-This is one of the two subchapters held back from live teaching (per the course plan) — genuinely
-new, valuable material, and the right kind of content to hold back precisely because it's an
-addition, not a replacement for something the syllabus already promised. It also happens to be
-where `raise`/`try`/`except` and type hints — used informally as core content earlier in the book
-(1.6, 1.7) after only a going-deeper introduction in 1.2 — finally get a systematic, dedicated
-treatment.
+This was genuinely new, valuable material with no syllabus-promised equivalent to replace — the
+reason it was structured as held-back extra material in the first place (see the scope note at
+the top: it's now folded into 1.7 and Bonus A rather than standing alone). It's also where
+`raise`/`try`/`except` and type hints — introduced only as going-deeper material back in 1.2 —
+finally get a systematic, dedicated core treatment, in what is now 1.7's second half.

@@ -1,10 +1,25 @@
-# Comparison: 1.7 Object-Oriented Programming for Natural Systems
+# Comparison: 1.7 Object-Oriented and Defensive Programming
 
-Old counterpart: the classes/OOP portion of **1.3 Data Structure, Functions, and Classes**
-(tutorial, `W1_S2_Tutorial.html`) + the "Part IV: Classes" portion of **1.4 (Exercises) Simple
-Data Structures** (`W1_S2.html`). In the old book this material sat inside week 1, alongside
+**Scope note (post-dates the rest of this file):** this subchapter's title and scope have since
+grown. What this file tracks below is only the OOP half — file/title references below still say
+"Object-Oriented Programming for Natural Systems" and predate two later changes: (1) the
+subchapter was renamed to "Object-Oriented and Defensive Programming" and absorbed a second half
+covering `assert` vs. exceptions, physical-precondition validation, `logging`, and `pytest` —
+that content was originally planned as a separate "Bonus B" subchapter with no old-book
+counterpart at all (see `ch1-comparison-bonus-b.md`, now itself superseded — Bonus B was merged
+into 1.7 rather than shipped standalone, and Bonus B's own packaging content moved on again into
+Bonus A); (2) inheritance was later promoted from a "Going deeper" dropdown to a core section
+("Inheritance: Extending a Class", with a live `RiverGauge(WeatherStation)` example) during the
+pre-launch Part I review, closing a sequencing gap where a core exercise required inheritance
+that only going-deeper material taught. The OOP-vs-old-book mapping below is otherwise still
+accurate.
+
+Old counterpart (OOP half only): the classes/OOP portion of **1.3 Data Structure, Functions, and
+Classes** (tutorial, `W1_S2_Tutorial.html`) + the "Part IV: Classes" portion of **1.4 (Exercises)
+Simple Data Structures** (`W1_S2.html`). In the old book this material sat inside week 1, alongside
 lists/dicts/functions (tracked in `ch1-comparison-2.md`); the new book gives it a full, standalone
 subchapter placed much later (1.7), after numpy, matplotlib/xarray, and pandas are already known.
+The defensive-programming half (see scope note above) has no old-book counterpart at all.
 
 ## Old book coverage, mapped to the new book
 
@@ -16,6 +31,7 @@ subchapter placed much later (1.7), after numpy, matplotlib/xarray, and pandas a
 | *(not confirmed in old outline)* | Instance vs. class attributes as an explicit, dedicated comparison | **New**, or at least not confirmed as a dedicated topic in old — old focuses on building one example class rather than contrasting attribute kinds. |
 | *(no old equivalent)* | `@dataclass` | **New** — no equivalent found in the old tutorial's outline at all. |
 | *(no old equivalent)* | Composition (`StationNetwork` holding and delegating to `WeatherStation` objects) | **New** — not confirmed in the old material. |
+| *(no old equivalent)* | Inheritance (`RiverGauge(WeatherStation)`, `super().__init__`) | **New, core** (promoted from a going-deeper dropdown during the pre-launch review — see the scope note above). Not confirmed in old material either way. |
 | Old 1.4, Main Exercise Part IV: Classes | Define classes, add custom methods | **Kept in spirit** — new 1.7's exercises (a class with state+behaviour, instance vs. class attributes, a dataclass record, composition, inheritance) cover this territory with different, more varied tasks than the old exercise's single class-definition prompt. |
 
 ## New in the new book, no old-book counterpart
@@ -33,4 +49,4 @@ subchapter placed much later (1.7), after numpy, matplotlib/xarray, and pandas a
 - **Systematic input validation**: the old `Hurricane` class validates its own constructor input directly; new 1.7 doesn't do this in its own lecture class, deferring the systematic treatment to the Bonus B (defensive programming) subchapter.
 
 Every exercise (1–7) is blank with a matching worked solution in a separate
-`07-oop-for-natural-systems-solutions.ipynb`.
+`1.7-oop-for-environmental-systems-solutions.ipynb`.

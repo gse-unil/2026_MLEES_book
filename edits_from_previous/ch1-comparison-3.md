@@ -29,4 +29,4 @@ Old counterpart: **1.5 Scientific Computing with Numpy** (tutorial, `W2_S1_Tutor
 - The `gsw`-based real seawater-density computation in Exercise 9.
 
 Every short exercise (1–8) is blank with a matching worked solution in a separate
-`03-numpy-solutions.ipynb`; Exercise 9, the real-dataset walkthrough, has no solution provided.
+`1.3-numpy-solutions.ipynb`; Exercise 9, the real-dataset walkthrough, has no solution provided.

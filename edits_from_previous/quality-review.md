@@ -1,4 +1,15 @@
-# Quality review: 1.5–1.10
+# Quality review: 1.5–1.10 (superseded — see note)
+
+**Superseded.** Written against the same 10-subchapter, `05`–`10` numbered structure as
+`course-plan.md` and `final-audit.md` (see those files' notes) — today's book has 8 numbered
+subchapters + Bonus A; what this file calls "06 reproducible data pipelines" and "08 defensive
+programming and packaging" are today's Bonus A and part of 1.7 respectively, and "09"/"10" are
+today's 1.6/1.8. See CLAUDE.md's "Current state" for the authoritative picture. Kept as a
+historical record of the bugs it found (the title-numbering mess, the stray `a = 1` cell, the
+degree-10 overfitting instability, the missing k-means/PCA content) — those fixes are real and
+still in effect. A separate, independent pre-launch review (see the `ch1-comparison-N.md` files
+and `todo-list.md`) has since re-audited all of today's 1.1–1.8 plus Bonus A and found its own,
+different set of issues — the two audits don't overlap in what they checked.
 
 Full-depth review (structure, palette, sequencing, style, stale outputs, resources) of the six
 lecture notebooks and their paired exercises not yet covered in earlier passes: pandas (05),

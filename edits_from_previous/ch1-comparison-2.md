@@ -42,5 +42,5 @@ tracked in `ch1-comparison-7.md`). Two old lectures feed this one new subchapter
   `raise`).
 
 Every short exercise here is blank with a matching worked solution in a separate
-`02-data-structures-and-control-flow-solutions.ipynb`; Exercise 12, the real-dataset walkthrough
+`1.2-data-structures-and-control-flow-solutions.ipynb`; Exercise 12, the real-dataset walkthrough
 continued from 1.1, has no solution provided, matching the book's capstone-exercise convention.

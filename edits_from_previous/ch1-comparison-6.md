@@ -35,5 +35,5 @@ Old counterpart: **1.11 Geospatial Data with Geopandas** (tutorial, `W3_S2_Tutor
 - Going-deeper on raster data with rioxarray, zonal statistics, DEM slope/aspect, and interactive maps with folium — none of these appear anywhere in the old material.
 
 Every short exercise (1–7) is blank with a matching worked solution in a separate
-`06-geospatial-vector-data-solutions.ipynb`; Exercise 8, the real-dataset walkthrough, has no
+`1.6-geospatial-vector-data-solutions.ipynb`; Exercise 8, the real-dataset walkthrough, has no
 solution provided.

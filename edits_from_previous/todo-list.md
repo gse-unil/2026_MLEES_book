@@ -15,6 +15,12 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   classroom setting the book's own framing (an open, online textbook) doesn't otherwise use.
   Flagged during the 1.3 review; not changed since it's a deliberate, consistent choice repeated
   6+ times, not a one-off slip — needs an explicit decision, not a silent rewrite.
+- **[Bonus A](../part-I/bonus-a-reproducible-data-pipelines-exercises.ipynb) exercises have no
+  packaging/uv coverage.** All 6 exercises are from the data-pipelines half of the lecture only;
+  none touch the `src/` layout, `uv init --lib`, or `uv.lock` content in the packaging half. Left
+  as-is at your call — packaging is awkward to exercise "from scratch in an empty code cell"
+  since it's CLI/project-scaffolding work, not notebook-native, which may be why it was never
+  added rather than an oversight. Revisit if a CLI-description-style exercise format is wanted.
 
 ## Part III — open from this session
 

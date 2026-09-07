@@ -32,4 +32,4 @@ Old counterpart: **1.9 Tabular Data with Pandas** (tutorial, `W3_S1_Tutorial.htm
 - Exercise 10's real USGS earthquake capstone, structured as the "long exercise, hints as comments, no solution" pattern already used in 1.1 and 1.3 — 1.5 didn't have one of these before this pass.
 
 Every short exercise (1–9) is blank with a matching worked solution in a separate
-`05-pandas-solutions.ipynb`; Exercise 10, the real-dataset walkthrough, has no solution provided.
+`1.5-pandas-solutions.ipynb`; Exercise 10, the real-dataset walkthrough, has no solution provided.

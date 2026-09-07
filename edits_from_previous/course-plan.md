@@ -1,4 +1,15 @@
-# Course plan: fitting the new book to the 2026 syllabus
+# Course plan: fitting the new book to the 2026 syllabus (superseded — see note)
+
+**Superseded.** This file describes a 10-subchapter book (1.1–1.10, `01-`/`02-`… filenames, two
+separate held-back subchapters — reproducible-data-pipelines and defensive-programming-and-
+packaging) that was later consolidated into today's structure: 8 numbered subchapters (1.1–1.8,
+`1.N-slug.ipynb` filenames) plus one bonus subchapter, Bonus A. Defensive programming merged onto
+1.7; packaging then moved from there into Bonus A. See CLAUDE.md's "Current state" section for
+the authoritative current picture, and `ch1-comparison-7.md`/`ch1-comparison-bonus-a.md`/
+`ch1-comparison-bonus-b.md` for where each piece of content described here actually lives now.
+Kept below as a historical record of the session that restored cartopy and k-means/PCA — that
+work is real and still reflected in today's 1.4 and 1.8 (since further expanded — see
+`ch1-comparison-4.md` and `ch1-comparison-8.md`) — not because its session-numbering is current.
 
 Syllabus: *Introduction to Scientific Programming with Python* (2 ECTS), 4 weeks × 2 sessions = 8
 sessions, written against the *old* 16-subchapter book. The new book has 10 subchapters (1.1–1.10);
