@@ -20,6 +20,15 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
 
 ## Part IV — open from this session
 
+- **Chapter 10, latent-diffusion downscaling notebook — skipped, not ported.** The live reference
+  site lists a third chapter-10 notebook ("Learning to downscale coarse climate fields using
+  Latent Diffusion," `ldm_env_notebook_empty.ipynb`) that isn't in the reference repo's own
+  `_toc.yml` on `main`. Its first cells mount the original instructor's personal Google Drive and
+  read a `requirements.txt` from their own local VSCode setup — not reproducible outside that one
+  person's environment, likely why it was dropped from the TOC. Skipped at your request. 10.1's
+  own title ("...Stochastic Downscaling") still references this material even though no notebook
+  covers it. If this is ever revisited, it would need a rework replacing the personal Drive/VSCode
+  dependency with this book's usual pooch-based data fetch.
 - **[11.2](../part-IV/11.2-hybrid-glacier-modeling-exercises.ipynb), CNN training-data cell** —
   raises `NotImplementedError` by design. Its source dataset (`ex.nc`, ~1.16 GB, glacier
   simulation states) is far over this book's 50 MB auto-commit ceiling; deferred at your request.
