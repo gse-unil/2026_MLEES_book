@@ -3,6 +3,19 @@
 Working list of open items — Part III porting gaps from the current session, plus every
 pre-existing `%TODO`-style marker found by scanning the rest of the book. Not published content.
 
+## Part I — open from the pre-launch review
+
+- **`data/part-I/S1_3_ex_lat.npy`, `S1_3_ex_lon.npy`, `S1_3_ex_temp.npy`** — orphaned, not
+  referenced by any notebook in the repo. Likely leftover from an earlier draft of 1.3's Argo
+  exercise (superseded by `data/part-I/float_data/` → `argo_float_data.zip`, now wired up). Safe
+  to delete once confirmed unused elsewhere.
+- **The repeated "the distributed hand-out omits the solutions" phrasing** in every subchapter's
+  exercises intro box (1.3–1.8, and now also 1.1/1.2 after retrofitting the missing box) sits
+  close to CLAUDE.md's "never mention lectures/universities" spirit — "hand-out" evokes a
+  classroom setting the book's own framing (an open, online textbook) doesn't otherwise use.
+  Flagged during the 1.3 review; not changed since it's a deliberate, consistent choice repeated
+  6+ times, not a one-off slip — needs an explicit decision, not a silent rewrite.
+
 ## Part III — open from this session
 
 - **5.3 (Physically-Informed Climate Modeling) — not started.** Blocked on a sizing decision for
@@ -35,8 +48,7 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   Needs a sizing decision (subset to the 6 variables the exercise actually uses + fewer timesteps,
   full commit with explicit go-ahead, or git-lfs) before it can be wired up the way
   [`bedrock.nc`](../data/part-IV/bedrock.nc) already is a few cells earlier in the same notebook.
-- **[10.3](../part-IV/10.3-autoencoders-gans-diffusion-exercises.ipynb) — gaps found cross-checking
-  against the new Géron PyTorch edition's chapter 18** (*Autoencoders, GANs, and Diffusion
+- **[10.3](../part-IV/10.3-autoencoders-gans-diffusion-exercises.ipynb) — gaps found cross-checking against the new Géron PyTorch edition's chapter 18** (*Autoencoders, GANs, and Diffusion
   Models*, book pp. 695–740). None of these are bugs — the core math (VAE reparameterization, the
   `/784` latent-loss scaling, the diffusion forward/reverse formulas, the Huber loss choice) matches
   the new edition exactly everywhere it overlaps. These are possible content additions:
@@ -65,8 +77,11 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   the methods in the exercises."
 - `part-I/1.2-data-structures-and-control-flow.ipynb` (cell 51, AI-critique section) — "improve
   this" on the mutable-default-argument diagnosis.
-- `part-I/1.1-environment-and-data-types-exercises.ipynb` (Exercise 8) — needs a link for the
-  weather-station data used in that exercise.
+- `part-I/1.1-environment-and-data-types-exercises.ipynb` (Exercise 8) — needs the real
+  station/dates/provider/link for the weather-station data used in that exercise. During the
+  pre-launch Part I review, the unfilled `[station]`/`[dates]`/`[provider]`/`[link]` bracket
+  placeholders that were rendering directly into the exercise's prose were removed — the `%
+  TODO: link for data.` marker (not rendered) is still in place until this is resolved.
 
 ## Not included
 
