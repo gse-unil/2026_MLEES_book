@@ -154,39 +154,70 @@ project:
             - file: part-II/4.4-ocean-regimes-identification-exercises.ipynb
               title: "4.4) (Exercises) Ocean Regimes Identification"
 
-    # # Part III: Basics of Machine Learning for Earth and Environmental Sciences
-    # - file: part-III/part-III.md
-    # - title: "5) Artificial Neural Networks and Surrogate Modeling"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
-    # - title: "6) Convolutional Neural Networks and Remote Sensing"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
-    # - title: "7) Recurrent Neural Networks and Hydrological Modeling"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
-    # - title: "8) Graph Neural Networks and Interconnected Systems"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
+    - file: part-III/part-III.md
+      children:
+        # - title: "5) Artificial Neural Networks and Surrogate Modeling"
+        #   children: (5.1, 5.2 ported; 5.3 still pending real climate-simulation data)
 
-    # # Part IV: Towards Trustworthy AI
-    # - file: part-IV/part-IV.md
-    # - title: "9) Explainable Artificial Intelligence and Understanding Predictions"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
-    # - title: "10) Generative Modeling and Uncertainty Quantification"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
-    # - title: "11) Hybrid Modeling and Knowledge-Guided Machine Learning"
-    #   children:
-    #     - file: part-I/01-python-fundamentals.ipynb
-    #     - file: part-I/01-python-fundamentals-exercises.ipynb
+        - file: part-III/ch-6-intro.md
+          title: "6) Convolutional Neural Networks and Remote Sensing"
+          children:
+            - file: part-III/6.1-cnn-remote-sensing.ipynb
+              title: "6.1) Convolutional Neural Networks and Remote Sensing"
+            - file: part-III/6.2-deep-computer-vision-exercises.ipynb
+              title: "6.2) (Exercises) Deep Computer Vision"
+            - file: part-III/6.3-land-cover-classification-exercises.ipynb
+              title: "6.3) (Exercises) Land Cover Classification"
+
+        - file: part-III/ch-7-intro.md
+          title: "7) Recurrent Neural Networks and Hydrological Modeling"
+          children:
+            - file: part-III/7.1-introduction-to-recurrent-neural-networks.ipynb
+              title: "7.1) Introduction to Recurrent Neural Networks (RNN)"
+            - file: part-III/7.2-neural-networks-for-time-series-predictions.ipynb
+              title: "7.2) Neural Networks for Time Series Predictions"
+            - file: part-III/7.3-composing-music-exercises.ipynb
+              title: "7.3) (Exercises) Composing Music"
+            - file: part-III/7.4-hydrological-modeling-exercises.ipynb
+              title: "7.4) (Exercises) Hydrological Modeling"
+
+        - file: part-III/ch-8-intro.md
+          title: "8) Graph Neural Networks and Interconnected Systems"
+          children:
+            - file: part-III/8.1-what-are-graph-neural-networks.ipynb
+              title: "8.1) What are Graph Neural Networks (GNNs)?"
+            - file: part-III/8.2-graph-neural-networks-with-pytorch-exercises.ipynb
+              title: "8.2) (Exercises) Graph Neural Networks with PyTorch"
+            # - title: "8.3) (Exercises) Neural Weather Prediction" — deferred, see part-III.md
+
+    # Part IV: Towards Trustworthy AI
+    - file: part-IV/part-IV.md
+      children:
+        - file: part-IV/ch-9-intro.md
+          title: "9) Explainable Artificial Intelligence and Understanding Predictions"
+          children:
+            - file: part-IV/9.1-why-model-interpretability.ipynb
+              title: "9.1) Why do we need machine learning model interpretability?"
+            - file: part-IV/9.2-xai-on-simple-datasets-exercises.ipynb
+              title: "9.2) (Exercise) XAI on Simple Datasets"
+
+        - file: part-IV/ch-10-intro.md
+          title: "10) Generative Modeling and Uncertainty Quantification"
+          children:
+            - file: part-IV/10.1-generative-modeling-and-uncertainty-quantification.ipynb
+              title: "10.1) Generative Modeling: From Uncertainty Quantification to Stochastic Downscaling"
+            - file: part-IV/10.2-uncertainty-quantification-exercises.ipynb
+              title: "10.2) (Exercise) Introduction to Uncertainty Quantification and Generative Modeling"
+            - file: part-IV/10.3-autoencoders-gans-diffusion-exercises.ipynb
+              title: "10.3) (Exercise) Autoencoders, Generative Adversarial Networks, and Diffusion Models"
+
+        - file: part-IV/ch-11-intro.md
+          title: "11) Hybrid Modeling and Knowledge-Guided Machine Learning"
+          children:
+            - file: part-IV/11.1-introduction-to-hybrid-modeling.ipynb
+              title: "11.1) Introduction to Hybrid Modeling"
+            - file: part-IV/11.2-hybrid-glacier-modeling-exercises.ipynb
+              title: "11.2) (Exercise) Introduction to Hybrid Models: Combining Physics-Based and Machine Learning Models"
 
     # Contributing
     - file: CONTRIBUTING.md
