@@ -24,24 +24,24 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   since it's CLI/project-scaffolding work, not notebook-native, which may be why it was never
   added rather than an oversight. Revisit if a CLI-description-style exercise format is wanted.
   Re-confirmed during the 2026-09-08 fix pass, still deliberate, still not touched.
-- **New, found during the 2026-09-08 fix pass:** [Bonus A](../part-I/bonus-a-reproducible-data-pipelines.ipynb)
-  cell `ff96d4b8` (CSV vs. parquet size comparison) has a committed `ImportError` traceback for a
-  missing pyarrow dependency — a genuinely broken output that slipped past the earlier pre-launch
-  review. `pyarrow` has since been added as a proper `uv`-managed dependency
-  (`pyarrow>=25.0.1` in `pyproject.toml`), but running the cell now raises a separate
-  `ArrowKeyError: A type extension with name pandas.period already defined` — this looks like an
-  environment/kernel issue (a `pandas`/`pyarrow` double-registration problem), not a bug in the
-  cell's own code, which is ordinary `df.to_parquet(...)` usage. Needs a clean-kernel re-run to
-  confirm; if it persists on a genuinely fresh kernel, may need a different `pyarrow` version
-  pinned against `pandas 3.0.5`.
-- **New, found during the 2026-09-08 fix pass:** [1.8](../part-I/1.8-statistical-foundations-and-ml-solutions.ipynb)
-  Exercise 7's overfitting demo needed a *second* fix beyond the km-rescaling already applied —
-  rescaling alone produced train R²=0.962/test R²=0.94 (confirmed by running it), not overfitting,
-  because the real cause was training-set size (42 points) relative to the polynomial's 9
-  parameters, not numerical conditioning. Refit on only the first 12 rows of the training set
-  instead, matching the lecture's own near-saturated ratio — reasoned by analogy to the lecture's
-  working demo, not yet verified by execution. Needs a re-run to confirm the gap is actually large
-  this time.
+- ~~[Bonus A](../part-I/bonus-a-reproducible-data-pipelines.ipynb) cell `ff96d4b8` (CSV vs.
+  parquet size comparison) — committed `ImportError` traceback for a missing pyarrow
+  dependency~~ — **resolved 2026-09-08, confirmed by the user.** `pyarrow` (and `zarr`, needed by
+  the same notebook's format-tour section) added as proper `uv`-managed dependencies; the
+  transient `ArrowKeyError: A type extension with name pandas.period already defined` seen on one
+  run was environment/kernel noise, not a real problem — a clean re-run succeeded.
+- ~~[1.8](../part-I/1.8-statistical-foundations-and-ml-solutions.ipynb) Exercise 7's overfitting
+  demo~~ — **resolved 2026-09-08, verified by execution.** Needed three iterations beyond the
+  initial km-rescaling: rescaling alone gave train R²=0.962/test R²=0.94 (not overfitting — the
+  real cause was training-set size relative to the 9 parameters, not conditioning); shrinking the
+  training set to 9-12 points (matching the lecture's near-saturated ratio) only closed the gap to
+  ~0.19-0.26, since the elevations are randomly scattered rather than evenly spaced, so a sparse
+  interpolation gap doesn't reliably force wild swings the way it does in the lecture's demo. The
+  fix that actually worked was a different mechanism: train only on the lowest 30% of the
+  elevation range and evaluate on the full test set, forcing extrapolation — degree-8 polynomial
+  extrapolation error grows explosively outside the fitted range, regardless of point count or
+  noise. Confirmed result: train R²=0.895, test R²≈−1.16×10¹². Both the exercise prompt and
+  solution updated to match.
 - **New, found during the 2026-09-08 fix pass:** [1.5](../part-I/1.5-pandas.ipynb) — a discrepancy
   surfaced between two review passes: cells `8a6e288b`, `3eabc0f4`, `30861396` were originally
   reported as having zero committed output, but on a later pass all three already had output in
