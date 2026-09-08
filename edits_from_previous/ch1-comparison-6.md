@@ -10,8 +10,8 @@ Old counterpart: **1.11 Geospatial Data with Geopandas** (tutorial, `W3_S2_Tutor
 | 1.11.1 Installing GeoPandas | pyshp, shapely, descartes, rtree, data download | **Dropped** — new 1.6 assumes geopandas is already available, consistent with the rest of the new book not dedicating space to installation. |
 | 1.11.2 Geopandas Data Structure | `GeoDataFrame` as a `pandas.DataFrame` subclass, `geometry` column, `GeoSeries` with a crs | **Kept** — new 1.6's "GeoDataFrame and shapely geometries" section covers this directly. |
 | 1.11.3.1 Reading Files | `geopandas.read_file()`, automatic filetype detection | **Kept.** |
-| 1.11.3.2 Vector Format Spatial Data | Point/Line/Polygon geometry types, interior/boundary/exterior | **Kept** — Point and Polygon confirmed in new 1.6; LineString not individually confirmed. |
-| 1.11.3.3 Writing Files | `GeoDataFrame.to_file()`, defaults to Shapefile | **Reduced/changed default.** New 1.6 writes GeoJSON and GeoPackage, and states an explicit preference for GeoPackage over shapefile (multi-file, column-name/size limits) — no equivalent stated preference confirmed in old. |
+| 1.11.3.2 Vector Format Spatial Data | Point/Line/Polygon geometry types, interior/boundary/exterior | **Kept.** Point and Polygon confirmed in new 1.6; LineString is now also used directly (a `LineString` between two projected station points, with its `.length` computed in km), closing a gap flagged in an earlier review pass. |
+| 1.11.3.3 Writing Files | `GeoDataFrame.to_file()`, defaults to Shapefile | **Kept, plus an explicit preference stated.** New 1.6 writes GeoJSON and GeoPackage as its main round-trip, and now also demonstrates a `.shp` write/read round-trip (with a note on the sidecar files a shapefile actually produces), alongside an explicit stated preference for GeoPackage over shapefile (multi-file, column-name/size limits) — no equivalent stated preference confirmed in old. |
 | 1.11.4.1 Area and Distance | `.area`, `.distance()` | **Kept, and reframed as the AI-critique.** Verified via direct text search: old 1.11.4.3 ("Projection") only frames reprojection as *aligning data from different sources*, with no discussion of degrees-vs-metres or measuring area/distance correctly. New 1.6 makes exactly that mistake — computing `.area`/`.distance()` in a geographic crs — the spine of its AI-critique, computational-thinking box, and worked before/after cells. This framing is new, not carried over. |
 | 1.11.4.2 Boundary and Centroid | `.boundary` (LineString), `.centroid` | **Restored.** New 1.6 uses `.boundary` once, to plot hazard-zone outlines, and now also uses `.centroid` in the buffer/dissolve/overlay section — a representative point computed from the dissolved hazard zone, folded into the section header ("buffer, dissolve, overlay, and centroid") and its own Learning-objectives/Takeaways bullets. |
 | 1.11.4.3 Projection | `.crs` inspection, `.to_crs()` reprojection, framed around aligning data from different sources | **Kept**, reframed — see the Area/Distance row above. `to_crs` itself carries over directly (`to_crs(2056)` in new 1.6). |
@@ -37,3 +37,13 @@ Old counterpart: **1.11 Geospatial Data with Geopandas** (tutorial, `W3_S2_Tutor
 Every short exercise (1–7) is blank with a matching worked solution in a separate
 `1.6-geospatial-vector-data-solutions.ipynb`; Exercise 8, the real-dataset walkthrough, has no
 solution provided.
+
+**2026-09-08 fix pass:** a pre-launch professor review found the AI-critique cell's committed
+output included a fabricated third line (a "geopandas warned about a geographic crs" claim the
+cell's own code couldn't produce) and that `.isin()`/`.assign()` were used in the map-plotting
+section with no introduction anywhere in 1.1–1.5. Fixed: the AI-critique cell now genuinely
+captures and checks geopandas's real CRS warning via `warnings.catch_warnings()` (needs a re-run
+to populate real output — nothing was fabricated); `.isin()` now gets a one-sentence gloss where
+it's first used. The `.shp`/`LineString`/`.length` additions noted in the table above were added
+in the same pass, closing the overclaim between the Learning-objectives/Takeaways boxes and what
+the notebook actually demonstrated.

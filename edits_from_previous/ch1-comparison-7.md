@@ -49,4 +49,19 @@ The defensive-programming half (see scope note above) has no old-book counterpar
 - **Systematic input validation**: the old `Hurricane` class validates its own constructor input directly; new 1.7 doesn't do this in its own lecture class, deferring the systematic treatment to the Bonus B (defensive programming) subchapter.
 
 Every exercise (1–7) is blank with a matching worked solution in a separate
-`1.7-oop-for-environmental-systems-solutions.ipynb`.
+`1.7-oop-for-environmental-systems-solutions.ipynb`. (Exercises 8–14, the appended
+defensive-programming half, are likewise blank-with-solution — see the scope note above; this
+file's own table only tracks the OOP half's 1–7.)
+
+**2026-09-08 fix pass:** a pre-launch professor review found the AI-critique had ended up
+structurally stranded — sitting before the core "Inheritance" section and before the entire
+defensive-programming half, instead of being the last content section before Takeaways as the
+book's structure requires everywhere else (a direct regression from promoting "Going deeper:
+inheritance" to a core section without moving the critique that used to trail it). Fixed: the
+critique now sits immediately before Takeaways, after the full defensive-programming half. The
+same pass also closed a real, previously-flagged structural gap — unlike every other subchapter,
+1.7 had no long real-dataset capstone exercise. **Exercise 15** was added: a validated
+earthquake-events exercise (real USGS data, reusing the dataset+hash already verified in 1.5's own
+exercises) combining both halves of this subchapter — a class that carries state, built with
+`raise`/exceptions rejecting invalid input rather than assertions. No solution provided, matching
+the book's capstone convention.

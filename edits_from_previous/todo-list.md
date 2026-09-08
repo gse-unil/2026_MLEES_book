@@ -5,10 +5,12 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
 
 ## Part I — open from the pre-launch review
 
-- **`data/part-I/S1_3_ex_lat.npy`, `S1_3_ex_lon.npy`, `S1_3_ex_temp.npy`** — orphaned, not
-  referenced by any notebook in the repo. Likely leftover from an earlier draft of 1.3's Argo
-  exercise (superseded by `data/part-I/float_data/` → `argo_float_data.zip`, now wired up). Safe
-  to delete once confirmed unused elsewhere.
+- ~~`data/part-I/S1_3_ex_lat.npy`, `S1_3_ex_lon.npy`, `S1_3_ex_temp.npy`~~ — **resolved.** These
+  turned out to already be gone from the live `data/part-I/` tree (only stale worktree copies
+  remained). `data/part-I/float_data/` itself — the directory this note said the files were
+  superseded by — turned out to be orphaned too (confirmed unreferenced by any notebook; the
+  exercises notebook uses `argo_float_data.zip` instead). Moved, not deleted, to
+  `data/part-I/_orphaned/float_data/` on 2026-09-08.
 - **The repeated "the distributed hand-out omits the solutions" phrasing** in every subchapter's
   exercises intro box (1.3–1.8, and now also 1.1/1.2 after retrofitting the missing box) sits
   close to CLAUDE.md's "never mention lectures/universities" spirit — "hand-out" evokes a
@@ -21,6 +23,30 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   as-is at your call — packaging is awkward to exercise "from scratch in an empty code cell"
   since it's CLI/project-scaffolding work, not notebook-native, which may be why it was never
   added rather than an oversight. Revisit if a CLI-description-style exercise format is wanted.
+  Re-confirmed during the 2026-09-08 fix pass, still deliberate, still not touched.
+- **New, found during the 2026-09-08 fix pass:** [Bonus A](../part-I/bonus-a-reproducible-data-pipelines.ipynb)
+  cell `ff96d4b8` (CSV vs. parquet size comparison) has a committed `ImportError` traceback for a
+  missing pyarrow dependency — a genuinely broken output that slipped past the earlier pre-launch
+  review. `pyarrow` has since been added as a proper `uv`-managed dependency
+  (`pyarrow>=25.0.1` in `pyproject.toml`), but running the cell now raises a separate
+  `ArrowKeyError: A type extension with name pandas.period already defined` — this looks like an
+  environment/kernel issue (a `pandas`/`pyarrow` double-registration problem), not a bug in the
+  cell's own code, which is ordinary `df.to_parquet(...)` usage. Needs a clean-kernel re-run to
+  confirm; if it persists on a genuinely fresh kernel, may need a different `pyarrow` version
+  pinned against `pandas 3.0.5`.
+- **New, found during the 2026-09-08 fix pass:** [1.8](../part-I/1.8-statistical-foundations-and-ml-solutions.ipynb)
+  Exercise 7's overfitting demo needed a *second* fix beyond the km-rescaling already applied —
+  rescaling alone produced train R²=0.962/test R²=0.94 (confirmed by running it), not overfitting,
+  because the real cause was training-set size (42 points) relative to the polynomial's 9
+  parameters, not numerical conditioning. Refit on only the first 12 rows of the training set
+  instead, matching the lecture's own near-saturated ratio — reasoned by analogy to the lecture's
+  working demo, not yet verified by execution. Needs a re-run to confirm the gap is actually large
+  this time.
+- **New, found during the 2026-09-08 fix pass:** [1.5](../part-I/1.5-pandas.ipynb) — a discrepancy
+  surfaced between two review passes: cells `8a6e288b`, `3eabc0f4`, `30861396` were originally
+  reported as having zero committed output, but on a later pass all three already had output in
+  the file. Not re-investigated further; worth a quick glance to confirm the current output is
+  genuinely current and not stale.
 
 ## Part III — open from this session
 
@@ -83,11 +109,9 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   the methods in the exercises."
 - `part-I/1.2-data-structures-and-control-flow.ipynb` (cell 51, AI-critique section) — "improve
   this" on the mutable-default-argument diagnosis.
-- `part-I/1.1-environment-and-data-types-exercises.ipynb` (Exercise 8) — needs the real
-  station/dates/provider/link for the weather-station data used in that exercise. During the
-  pre-launch Part I review, the unfilled `[station]`/`[dates]`/`[provider]`/`[link]` bracket
-  placeholders that were rendering directly into the exercise's prose were removed — the `%
-  TODO: link for data.` marker (not rendered) is still in place until this is resolved.
+- ~~`part-I/1.1-environment-and-data-types-exercises.ipynb` (Exercise 8) — `% TODO: link for
+  data.` marker~~ — **resolved 2026-09-08.** The marker was stale — the fetch cell right below it
+  already had a working `pooch.retrieve` URL and hash — and has been deleted.
 
 ## Not included
 
