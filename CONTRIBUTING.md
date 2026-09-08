@@ -1,6 +1,4 @@
 % TODO: check for errors in the text
-% TODO: add different platforms not only MacOS
-% TODO: add policy for drafts in drafts/
 
 # Contributing to the MLEES book
 
@@ -14,7 +12,9 @@ You do not need to be a software engineer to contribute. If you can edit a noteb
 
 ## 1. One-time setup
 
-You need [git](https://git-scm.com/) and [uv](https://docs.astral.sh/uv/) (a fast Python environment manager). On macOS:
+You need [git](https://git-scm.com/) and [uv](https://docs.astral.sh/uv/) (a fast Python environment manager).
+
+**macOS / Linux:**
 
 ```bash
 # install uv if you don't have it
@@ -28,9 +28,27 @@ cd 2026_MLEES_book
 uv sync
 ```
 
-`uv sync` installs the exact, version-locked toolchain — everyone works in the same environment, which is what keeps builds reproducible. Do not install the book's tools globally with `pip`.
+**Windows (PowerShell):**
 
-Node.js is **not** required for authoring. The MyST engine underneath is Node-based, so the first time you preview locally it will offer to install Node for you. If you prefer to have it system-wide, `brew install node` once.
+```powershell
+# install uv if you don't have it
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# clone the book and enter it
+git clone git@github.com:gse-unil/2026_MLEES_book.git
+cd 2026_MLEES_book
+
+# create the pinned environment (reads pyproject.toml + uv.lock)
+uv sync
+```
+
+If `git clone` over SSH fails because you haven't set up an SSH key yet, either follow GitHub's
+[SSH setup guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) or clone
+over HTTPS instead: `git clone https://github.com/gse-unil/2026_MLEES_book.git`.
+
+`uv sync` installs the exact, version-locked toolchain — everyone works in the same environment, which is what keeps builds reproducible, on every OS. Do not install the book's tools globally with `pip`.
+
+Node.js is **not** required for authoring. The MyST engine underneath is Node-based, so the first time you preview locally it will offer to install Node for you. If you prefer to have it system-wide: `brew install node` on macOS, or download the installer from [nodejs.org](https://nodejs.org) on Windows.
 
 ---
 
@@ -64,7 +82,7 @@ Understanding the build model prevents the most common mistakes.
 
 ## 4. Editing workflow (git)
 
-Always work on a branch and open a pull request. This lets others review and lets CI check the build before anything goes live.
+**Nothing gets added to the book by pushing straight to `main` — every change, from a typo fix to a new subchapter, goes through a branch and a pull request.** This lets others review and lets CI check the build before anything goes live; direct pushes to `main` are not the way in, regardless of how small the change is.
 
 ```bash
 git checkout main
@@ -78,7 +96,15 @@ git commit -m "Add xarray section to Part I data-loading chapter"
 git push -u origin part1/add-xarray-section
 ```
 
-Then open a pull request against `main` on GitHub. Describe what you changed and why. A reviewer will look it over; once approved and merged, the site rebuilds automatically.
+Then open the pull request itself, either from the command line with the [GitHub CLI](https://cli.github.com/):
+
+```bash
+gh pr create --title "Add xarray section to Part I data-loading chapter" --body "What changed and why."
+```
+
+or from the browser — GitHub shows a "Compare & pull request" button on the repository page right after you push a new branch; click it, fill in the same title/description, and open the PR against `main`.
+
+Describe what you changed and why. A reviewer will look it over; once approved and merged, the site rebuilds automatically.
 
 Branch-name and commit conventions: prefix branches with the area you're touching (`part1/`, `ml/`, `infra/`, `fix/`); write commit messages in the imperative ("Fix broken link", not "Fixed" or "Fixes").
 
@@ -98,6 +124,24 @@ Practical consequences:
 - Keep cell outputs clean. Clear stray debugging prints and long warning spew before saving. Noisy `stderr` can be suppressed project-wide in `myst.yml` settings, but tidy notebooks are better.
 - Set a fixed random seed wherever results would otherwise change run to run, so figures are stable across rebuilds.
 - Keep runtimes short. Heavy training does not belong in a notebook that contributors must run; precompute, cache, or load a small representative result instead.
+
+### Adding a Python package
+
+If a notebook you're writing needs a package that isn't already in the environment, add it with
+`uv` rather than `pip install`ing it — this keeps `pyproject.toml` and `uv.lock` (and therefore
+every other contributor's environment) in sync:
+
+```bash
+uv add <package-name>
+```
+
+This updates `pyproject.toml`'s dependency list and `uv.lock`'s pinned resolution, and installs
+the package into your local environment in one step. Commit both changed files alongside your
+notebook changes — a package your notebook imports but that isn't in `pyproject.toml` will work
+locally for you and then fail for the next contributor (or in CI) with an unhelpful `ImportError`.
+
+Do not edit `pyproject.toml`'s dependency list by hand and then run `uv sync` — always go through
+`uv add` so the lockfile stays consistent with what's declared.
 
 ---
 
@@ -124,6 +168,29 @@ subchapter's own number, with `-exercises`/`-solutions` suffixes for the paired 
 files move or are renamed. Construct links from the page slug, or use the project-level badge
 mechanism so a rename can't orphan them. (Hand-written badges pointing at the wrong path were a
 recurring failure in the previous edition; we are avoiding that by construction.)
+
+### Sharing a draft before it's ready
+
+Want feedback on a notebook before it's polished enough to register as a real page above? Put it
+in `drafts/` at the repository root instead. `myst.yml` excludes `drafts/**` from the build
+entirely, so a draft notebook doesn't need a `toc` entry, doesn't need to run clean, and can't
+break the published site no matter what state it's in.
+
+```bash
+git checkout -b part1/draft-new-topic
+mkdir -p drafts
+cp your-notebook.ipynb drafts/
+git add drafts/your-notebook.ipynb
+git commit -m "Add draft: new topic for review"
+git push -u origin part1/draft-new-topic
+```
+
+Open a pull request the same way as any other change (§4), and say in the description that it's a
+draft, not a finished page — that tells reviewers to comment on direction and content rather than
+check it against the pre-PR checklist in §9. Once it's ready to actually publish, move it out of
+`drafts/` into the right `part-*/` directory, register it in `myst.yml`'s `toc` as above, and make
+sure it runs clean before committing (§5) — from there it's a normal page going through normal
+review.
 
 ---
 
