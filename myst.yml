@@ -35,6 +35,7 @@ project:
   github: gse-unil/2026_MLEES_book
   plugins:
     - colab-badge.mjs
+    - kaggle-badge.mjs
   license:
     content: CC-BY-4.0
     code: MIT

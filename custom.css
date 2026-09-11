@@ -37,3 +37,15 @@
     font-weight: 700 !important;
     color: inherit !important;
 }
+
+/* Cloud-launch badges (Colab/Kaggle) at the top of each notebook: keep them on
+   one line. book-theme's Tailwind preflight forces img { display: block },
+   which stacks each badge on its own row despite the shared <span> the
+   colab-badge.mjs/kaggle-badge.mjs plugins inject them into. Target only the
+   badge images, not the theme's own link-icon svg (the "open in new tab"
+   arrow each link gets), which this selector would otherwise enlarge. */
+.notebook-badges a.link img {
+    display: inline !important;
+    margin: 0 !important;
+    vertical-align: middle;
+}
