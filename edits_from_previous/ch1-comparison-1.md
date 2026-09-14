@@ -31,7 +31,7 @@ to new 1.2. Rows below still list it, so this table stays a complete record of o
 | 1.1.4.2.2 Bonus: netCDF4 — reading stored files | Reading a netCDF4 file back | Same replacement as above — via xarray in 1.4, not here. |
 | *(no old equivalent)* | — | **New:** "When generated code lies: a hidden type bug" AI-critique (string-vs-numeric comparison) closes the subchapter — this device doesn't exist anywhere in the old book. |
 | Old 1.2, Warm-up 1–3 | While-loop playlist ratings, for-loop equivalent, `enumerate` over a list of colors | These are control-flow warm-ups; dropped as written. `enumerate` itself resurfaces in new 1.2, not 1.1. |
-| Old 1.2, Exercise 1 (Text File) | Write a sentence, read it back, append three more, using the `math` module for π precision | **Reframed.** New 1.1's Exercises 6–7 ("Round-trip through a file[, with an append]") cover the same write/read/append arc with `pathlib`, dropping the `math.pi` framing device. |
+| Old 1.2, Exercise 1 (Text File) | Write a sentence, read it back, append three more, using the `math` module for π precision | **Restored**, as its own Exercise 6 ("Formatting π to the precision you choose"), ahead of the write/read/append arc it originally led (now Exercises 7–8, renumbered from 6–7). Uses the exact old prompt's write-then-append structure and `math.pi` formatted to four decimals via an f-string, both already available at this point in 1.1's own lecture (`math.pi` is demonstrated directly; f-string format specifiers get their own section, 1.1.4). |
 | Old 1.2, Exercise 2 (Tabular File) | Uncertain — the old page truncated before this exercise's body; a `pandas`/`numpy` import was visible at the top of the notebook, which would be off-sequence for an old-1.1-equivalent lesson if actually used there | Not reproduced. New 1.1's Exercise 8 (a real multi-step station-data exercise, continued into 1.2) is a different, purpose-built real-dataset capstone, not a port of this specific exercise. |
 
 ## New in the new book, no old-book counterpart
@@ -40,3 +40,10 @@ to new 1.2. Rows below still list it, so this table stays a complete record of o
 - `pathlib.Path` as the sole file-I/O interface, with the overwrite-vs-append distinction taught explicitly.
 - The "When generated code lies" AI-critique device — present in every new subchapter, absent everywhere in the old book.
 - A single running dataset (the Jungfraujoch station) threading through the whole subchapter, vs. the old tutorial's scattered, self-contained mini-examples.
+
+**2026-09-14 fix pass:** restored the old π-precision exercise dropped when 1.1's exercises were
+last touched, as new Exercise 6. The three exercises after it (old 6, 7, and the real-dataset
+capstone) are renumbered 7, 8, 9 — including the solutions notebook and the "Exercise 9, the
+real-dataset walkthrough, has no solution provided" line in its intro box. 1.2's own Exercise 15
+("A season of station data, continued") cross-references this capstone by number and is updated
+to match (now "Exercise 9 of the previous subchapter").
