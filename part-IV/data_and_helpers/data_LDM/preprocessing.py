@@ -12,11 +12,9 @@ import torch.nn.functional as F
 import json
 import random
 
-DATA_DIR = "/content/drive/MyDrive/data_LDM/"
-STATIC_DIR = os.path.join(DATA_DIR, "static_vars/")
-YEARS = [str(y) for y in range(2021)]
-
-#To drastically reduce the size of the dataset, first 6 months are selected 
+DATA_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(DATA_DIR, "static_vars")
+YEARS = [str(y) for y in range(2020, 2021)]  
 
 def compute_stats(tensor):
     mean = tensor.mean().item()
@@ -54,8 +52,8 @@ def load_land_cover(filepath, means=None, stds=None):
 
 def collate_fn(batch):
     """
-    Upsample low-res temperature to high-res dimensions and combine with HR static inputs.
-    This creates fuzzy upsampled inputs for the UNet to refine.
+    Upsample low-res temperature (25 km) to high-res (2.2 km) dimensions and combine with HR static inputs.
+    This creates fuzzy upsampled inputs for the UNet to refine using "residual learning"
     """
     # Stack the individual components
     low_2mt = torch.stack([b["low_2mT"] for b in batch])  # [B, 1, 84, 72]
@@ -76,7 +74,7 @@ def collate_fn(batch):
     )
     
     # Concatenate upsampled temperature with high-res static inputs
-    # This creates: [B, 1+1+1+num_lc_bands, 672, 576] - all at high resolution
+    # This creates: [B, 1+1+1+num_lc_bands, 672, 576] - all at 2.2 km resolution
     combined_input = torch.cat([low_2mt_upsampled, dem, lat, lc], dim=1)
     
     return combined_input, high_2mt
@@ -99,6 +97,7 @@ def load_and_normalise(static_dir, val_frac=0.15, test_frac=0.15, save_stats_jso
     lc = load_land_cover(os.path.join(static_dir, "land_cover_classes_2km_domain_trim_EPSG3035.tif"), means=lc_means, stds=lc_stds)
 
     # Compute stats for low-res 2m temperature using only the training split
+
     file_list = get_file_list()
     N = len(file_list) * 24
     n_val = int(val_frac * N)
@@ -145,6 +144,6 @@ def get_file_list():
     files = sorted(files, key=lambda x: x[2])  # sort by date
     n_total = len(files)
     n_keep = int(0.5 * n_total)
-    files = files[:n_keep]  # keep first 80%
+    files = files[:n_keep] 
     print(f"Using {n_keep} of {n_total} files from 2020.")
     return files

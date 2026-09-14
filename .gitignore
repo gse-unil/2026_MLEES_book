@@ -28,6 +28,9 @@ part-IV/data
 *.zst
 *.tif
 *.ckpt
+*.yaml
+
+part-IV/LDM_notebook_solutions.ipynb
 
 # MacOS
 .DS_Store
