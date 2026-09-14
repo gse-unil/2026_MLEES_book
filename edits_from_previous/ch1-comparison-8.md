@@ -55,3 +55,59 @@ Every exercise (1–10) is blank with a matching worked solution in a separate
 Penguins), and 10 (forest fires) use real data; the rest remain synthetic. Unlike most other
 subchapters, 1.8 gives every exercise — including its real-data ones — a full worked solution
 rather than reserving a no-solution capstone slot.
+
+**2026-09-14 — old 1.13 re-read from the local notebook, and the gaps it exposed closed.** The
+table above records old 1.13.3 "Linear Classification" as *"body content could not be retrieved
+despite repeated attempts"*. That is now superseded: the old notebook exists locally at
+`2025_MLEES_book_online/notebook/W4_S1_Tutorial.ipynb` (83 cells) and was read in full. The
+section turned out to be a worked penguin example, not a stub, and several other pieces of old
+1.13 were missing from new 1.8 as well. All of the following are now in the lecture.
+
+*Logos and dataset artwork.* A seaborn logo opens the seaborn half and a scikit-learn logo opens
+the machine-learning half, matching the pattern 1.3–1.6 use (own markdown cell, credit as an HTML
+anchor). The scikit-learn logo comes from the Commons file the user supplied, which states
+BSD-3-Clause and names the scikit-learn developers as author; the seaborn logo from the project's
+own documentation. Old 1.13 also carried two Allison Horst illustrations that new 1.8 had dropped,
+both restored: the three-species artwork in a **new "The Palmer Penguins Dataset" section** (the
+dataset was previously loaded with no introduction at all), and the bill-dimensions diagram where
+`bill_length_mm`/`bill_depth_mm` are first used — that diagram also explains the *culmen* naming,
+which is what the old book's column names used and this book's do not. Attribution follows the
+package's own requirement ("Artwork by @allison_horst"), with the data credited to K. Gorman and
+the Palmer Station Antarctica LTER under CC-0.
+
+*Content restored from old 1.13:*
+- **The three-pillars framing** (regression, classification, clustering) opening the scikit-learn
+  section, and the **least-squares cost function** $J(w,b)=\sum (y_i-\hat{y}_i)^2$ written out —
+  old 1.13.1 stated both; new 1.8 had neither.
+- **More data, better parameters** (old cells 18–19): the lapse-rate fit repeated at 80, 800 and
+  8000 stations, recovering −6.35, −6.54 and −6.51 °C km⁻¹ against the −6.5 built into the data.
+- **k-means on `make_blobs` before the real data** (old cells 23–26), with the fitted centroids
+  drawn as white squares. New 1.8 went straight to the messy penguin case; the clean case is what
+  makes the algorithm legible.
+- **The feature-plane comparison** (old cells 52–55): body mass against flipper length beside bill
+  length against flipper length, showing that the species Adelie/Chinstrap overlap in the first
+  plane and separate in the second. New 1.8 asserted this in prose without showing it.
+- **Silhouette analysis** as a worked subsection (old 1.13's "Silhouette Analysis", cells 49–51),
+  with the score defined and computed across k=2..6. It was previously a one-line comment naming
+  `silhouette_score`. The mean score peaks at k=2 (0.630 against 0.580 for k=3), reproducing the
+  old book's own finding — and the prose now says what that means: both diagnostics answer how
+  separable *these two features* are, not how many species exist.
+- **The penguin classification example** (old 1.13.3, cells 57–81), added as
+  "Separating two species by bill shape" after the existing frost example: Adelie against
+  Chinstrap on the two bill measurements, per-species histograms showing bill length separates and
+  bill depth barely does, `train_test_split` with `stratify`, `StandardScaler` inside a pipeline
+  (motivated by the ~3× scale difference between the two features, as the old tutorial motivated
+  it), 0.97 test accuracy, and the fitted weights read back and drawn as a horizontal bar chart —
+  3.79 for bill length against −1.19 for bill depth, the same dominance and signs the old
+  tutorial reported. The old book's manual standardisation cells were not reproduced: the
+  `StandardScaler` pipeline is already core content earlier in new 1.8.
+
+*Deliberately not restored:* two images in the old notebook whose provenance is a medium.com
+upload and a journal page (`1*UgYbimgPXf6XXxMy2yqRLw.png`, `1520-0469-JAS-D-20-0055...png`) —
+neither carries a usable licence statement, so neither was reused.
+
+Learning objectives and takeaways rewritten for the new material. Verified: all 24 code cells
+extracted and run in order against the project environment, no errors; every printed number in the
+new prose was checked against the actual output, and the quoted bill-measurement ranges
+(32–58 mm, 15–21 mm) and record count (344 records, 342 after dropping the two with no body
+measurements) against the committed dataset. The notebook needs `Restart & Run All`.
