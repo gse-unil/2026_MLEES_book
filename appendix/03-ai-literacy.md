@@ -1,6 +1,6 @@
 # AI Literacy for Scientific Programming
 
-AI chatbots are a powerful tool, not an oracle: excellent at producing plausible code fast, and unable to know whether that code is *right* for your data, your units, or your question. This page is a living guide — expect it to change faster than the rest of the book as models and norms evolve — built around three habits: being a precise communicator, a skeptical reviewer, and an active learner.
+AI chatbots produce plausible code fast, but cannot know whether that code is *right* for your data, your units, or your question. This page is a living guide — expect it to change faster than the rest of the book as models and norms evolve — built around three habits: being a precise communicator, a skeptical reviewer, and an active learner.
 
 :::{admonition} Learning objectives
 :class: tip
@@ -12,7 +12,7 @@ AI chatbots are a powerful tool, not an oracle: excellent at producing plausible
 
 ## Be a precise communicator
 
-Garbage in, garbage out. A prompt that gets a useful answer on the first try usually states four things:
+A prompt that gets a useful answer on the first try usually states four things:
 
 1. **The goal** — the high-level scientific objective, not just the mechanical step.
 2. **The environment** — language and libraries (`python`, `pandas`, `numpy`, ...).
@@ -41,7 +41,7 @@ Pinning the actual column names and structure gets `df_temp.resample("ME").mean(
 
 ## Be a skeptical reviewer
 
-Never trust, always verify. Generated code runs and looks reasonable far more often than it is actually correct — the failures that matter in science are silent, not crashes. Three checks catch most of them:
+Generated code runs and looks reasonable far more often than it is actually correct — the failures that matter in science are silent, not crashes. Three checks catch most of them:
 
 1. **Understand.** Can you explain what every line does? If not, ask for a line-by-line explanation before running it.
 2. **Test.** Run it on a small, known subset first, and check one value by hand.
@@ -59,7 +59,7 @@ is the kind of correction only a reviewer who understands the *domain*, not just
 
 ## Be an active learner
 
-Use it to build understanding, not just to produce code. Three prompt patterns are worth having ready:
+Three prompt patterns turn the assistant into a tutor instead of a code vending machine:
 
 - **Explain this error** — paste the full traceback and ask what it means and why, not just for a fix.
 - **Compare these methods** — "what's the difference between a `for` loop and a `while` loop, and when would I use one over the other?" turns a syntax question into an understanding one.

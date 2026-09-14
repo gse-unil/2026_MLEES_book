@@ -82,7 +82,7 @@ Understanding the build model prevents the most common mistakes.
 
 ## 4. Editing workflow (git)
 
-**Nothing gets added to the book by pushing straight to `main` — every change, from a typo fix to a new subchapter, goes through a branch and a pull request.** This lets others review and lets CI check the build before anything goes live; direct pushes to `main` are not the way in, regardless of how small the change is.
+**New changes shouldn't be pushed straight to `main` — every change, from a typo fix to a new subchapter, should go through a branch and a pull request.** This lets others review and lets CI check the build before anything goes live.
 
 ```bash
 git checkout main
@@ -117,6 +117,17 @@ Notebooks are the heart of the book, and they have one golden rule that follows 
 **Before committing a notebook, restart and run it top to bottom, then commit it *with* its outputs.**
 
 In Jupyter: *Kernel → Restart Kernel and Run All Cells*. Confirm every cell runs without error and the figures look right. Save. The outputs you see locally are exactly what readers will see, because CI does not re-run anything.
+
+To sanity-check that a notebook runs cleanly without opening Jupyter — or to scope the check to just what you've changed instead of the whole book — pass it directly to a scoped, executed build:
+
+```bash
+uv run myst build --execute part-I/1.5-pandas.ipynb
+
+# or scoped to whatever notebooks you've actually edited:
+uv run myst build --execute $(git diff --name-only -- '*.ipynb')
+```
+
+This catches execution errors fast, but it renders into `_build/`, not into the notebook itself — it does not replace *Restart Kernel and Run All Cells* for saving fresh outputs into the file you commit.
 
 Practical consequences:
 
