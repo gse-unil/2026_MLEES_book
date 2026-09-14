@@ -47,3 +47,11 @@ to populate real output — nothing was fabricated); `.isin()` now gets a one-se
 it's first used. The `.shp`/`LineString`/`.length` additions noted in the table above were added
 in the same pass, closing the overclaim between the Learning-objectives/Takeaways boxes and what
 the notebook actually demonstrated.
+
+**2026-09-14 — geopandas logo added as the subchapter cover.** Added in its own markdown cell
+between the H1/intro cell and the learning-objectives box, the same position and styling the other
+part-I library logos use (`width: 500px`, credit as an HTML anchor in the caption). Fetched from
+the URL the user supplied, `geopandas.org/en/latest/_images/geopandas_logo.png` — the project's own
+published asset, verified to resolve and committed unmodified as
+`part-I/_static/geopandas_logo.png` (5518 × 1721 but only 50 KB, since it is a colormap PNG, so
+there was nothing to gain from re-encoding it). 1.6 had no figure of any kind before this.

@@ -44,3 +44,20 @@ tracked in `ch1-comparison-7.md`). Two old lectures feed this one new subchapter
 Every short exercise here is blank with a matching worked solution in a separate
 `1.2-data-structures-and-control-flow-solutions.ipynb`; Exercise 15, the real-dataset walkthrough
 continued from 1.1, has no solution provided, matching the book's capstone-exercise convention.
+
+**2026-09-14 — Exercise 15's sensor gap is now stated in the exercise.** Writing the solution
+turned up a latent defect: 16 records in `data/part-I/ch1-lab01-ex8.csv` (late October to
+mid-November 2022) have an empty temperature field, so `float(fields[2])` raises
+`ValueError: could not convert string to float: ''`. Steps 2 to 6 as written walked the whole file
+with no guard, which meant a reader following them literally crashed several steps before Step 7,
+where handling malformed input is the actual lesson.
+
+Fixed in the exercise text rather than only in the solution: Step 2 now names the gap, says
+`float("")` raises, and asks the reader to skip and count those days (with a matching hint about
+`fields[2] == ""` and `continue`); Step 3 notes that a day the sensor did not record is not an
+observation, so October and November come out short; Step 7's "real files contain junk" opener now
+acknowledges that the reader has already met one kind of junk, instead of introducing the idea as
+hypothetical. The data itself was not touched — the gap is real and worth meeting.
+
+With the skip in place the file yields 349 observations over 12 months, July the warmest at
+27.97 °C, and Step 7's test list keeps 2 and skips 2 as the exercise states.
