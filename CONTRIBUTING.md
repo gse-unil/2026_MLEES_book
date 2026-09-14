@@ -75,7 +75,7 @@ uv run jupyter book build --html
 Understanding the build model prevents the most common mistakes.
 
 - **Source in, site out.** The repository contains only source: notebooks, markdown, `myst.yml`, and `references.bib`. The built website is generated fresh by CI on every push to `main`. **Never commit the `_build/` directory** — it is git-ignored for a reason.
-- **CI does not run your notebooks.** The deploy workflow installs only Node and the MyST engine. It renders the outputs **already saved inside your `.ipynb` files** and does not execute them. This is deliberate: a notebook that errors cannot publish a traceback to the live site. The corollary is critical — *the quality of the published outputs is entirely your responsibility, set when you run the notebook locally before committing* (see §5).
+- **CI executes every notebook before publishing.** The deploy workflow installs the project's Python environment and runs each notebook, then builds the site from those fresh outputs — not from whatever you last saved locally. Lecture notebooks must run clean: any error there fails the *entire* deploy, not just that page. `*-exercises.ipynb` notebooks are the deliberate exception — their fill-in-the-blank cells (`_____`) are expected to raise, so CI lets those errors happen and strips only the failed cells' output afterward, leaving the blank code visible with no traceback. See §5 for what this means day to day.
 - **`main` is the published branch.** Any merge to `main` redeploys the site within a few minutes. Do not push directly to `main`; use a branch and a pull request (§4).
 
 ---
@@ -112,11 +112,13 @@ Branch-name and commit conventions: prefix branches with the area you're touchin
 
 ## 5. Working with notebooks
 
-Notebooks are the heart of the book, and they have one golden rule that follows directly from §3:
+Notebooks are the heart of the book. CI now executes them for you (§3), so committing correct baked-in outputs is no longer what makes the *site* correct. Running a notebook locally before committing is still strongly recommended, though, for three things a green CI run can't cover:
 
-**Before committing a notebook, restart and run it top to bottom, then commit it *with* its outputs.**
+- **A broken lecture notebook fails the whole deploy**, not just its own page. Catching that locally, before you push, is far faster than finding out from a failed GitHub Action.
+- **CI only catches crashes, not silently wrong output.** A cell that runs without error but produces a flipped plot or a nonsense number sails straight through. Only looking at it yourself catches that.
+- **`*-exercises.ipynb` notebooks are allowed to error on their fill-in-the-blank cells** — CI strips those specific outputs so the page shows clean, unsolved code. It won't tell you whether the *surrounding* code (setup cells, hints, anything before the first blank) still works; that's still on you to check.
 
-In Jupyter: *Kernel → Restart Kernel and Run All Cells*. Confirm every cell runs without error and the figures look right. Save. The outputs you see locally are exactly what readers will see, because CI does not re-run anything.
+In Jupyter: *Kernel → Restart Kernel and Run All Cells*. Confirm every cell runs without error — outside of a fill-in-the-blank exercise cell, where that's expected — and the figures look right, then save.
 
 To sanity-check that a notebook runs cleanly without opening Jupyter — or to scope the check to just what you've changed instead of the whole book — pass it directly to a scoped, executed build:
 
@@ -127,11 +129,11 @@ uv run myst build --execute part-I/1.5-pandas.ipynb
 uv run myst build --execute $(git diff --name-only -- '*.ipynb')
 ```
 
-This catches execution errors fast, but it renders into `_build/`, not into the notebook itself — it does not replace *Restart Kernel and Run All Cells* for saving fresh outputs into the file you commit.
+This catches execution errors fast, but it renders into `_build/`, not into the notebook itself — it does not replace *Restart Kernel and Run All Cells* for saving fresh outputs into the file you commit. Note it uses plain MyST semantics, not CI's: it has no notion of `*-exercises.ipynb` being allowed to fail, so running it against an exercise notebook will halt (and report failure) at the first blank, same as any other error. That's expected, not a sign something's wrong — the failure just isn't meaningful signal there. To check an exercise notebook exactly the way CI will, run the CI script itself: `uv run python .github/scripts/execute_notebooks.py`.
 
 Practical consequences:
 
-- A notebook that fails halfway will not break the build — it will silently publish broken or missing outputs. Catching that is on you, locally.
+- A lecture notebook that fails halfway now breaks the *entire* deploy — the whole site fails to publish until it's fixed, not just that page. An `*-exercises.ipynb` notebook failing on its intentional blanks is fine and expected; CI strips just that cell's error output.
 - Keep cell outputs clean. Clear stray debugging prints and long warning spew before saving. Noisy `stderr` can be suppressed project-wide in `myst.yml` settings, but tidy notebooks are better.
 - Set a fixed random seed wherever results would otherwise change run to run, so figures are stable across rebuilds.
 - Keep runtimes short. Heavy training does not belong in a notebook that contributors must run; precompute, cache, or load a small representative result instead.
