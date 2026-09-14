@@ -41,9 +41,9 @@ old subchapter (1.7.13); it is co-equal, core content in the new one.
 | *(no confirmed old equivalent)* | Saving figures | **Expanded.** New 1.4 gives vector-vs-raster saving (`.svg`/`.pdf` vs. `.png`) its own explicit section with a `pathlib.Path.glob` confirmation step — the old tutorial doesn't call this out as a distinct topic. |
 | *(no old equivalent — xarray)* | — | **New, core:** `DataArray` vs. `Dataset`, `dims`/`coords`/`attrs`; `.isel`/`.sel` (incl. `method="nearest"`); label-aware reductions and arithmetic (`mean(dim="time")`); `.resample`/`.groupby`; `.plot()` auto-labelling; `to_netcdf`/`open_dataset` round-trip; the "refer to data by label, not by position" computational-thinking box. None of this is core in the old book — only a brief bonus mention. |
 | Old 1.8, Exercise 1, Part I | Line/contour plots on real global temperature data | **Restored** — new Exercise 9 uses the real NASA GISTEMP global-temperature-anomaly record (`data/part-I/nasa_gistemp_global_temp_anomaly.csv`, monthly since 1880): a line plot of the annual mean, then the full `(year, month)` field built as an xarray `DataArray` and drawn with `.plot()` as a labelled heatmap — covering both the "line" and "contour/gridded" halves of the old exercise with one real dataset. |
-| Old 1.8, Exercise 1, Part II | Scatter plot of real earthquake data, log-scaled depth colouring, magnitude-scaled markers | **Still dropped from this pairing** — not attempted this pass; real earthquake data is used elsewhere in the book (1.5, 1.9) but not for a scatter/colour-mapping exercise in 1.4. |
+| Old 1.8, Exercise 1, Part II | Scatter plot of real earthquake data, log-scaled depth colouring, magnitude-scaled markers | **Restored** as new Exercise 11, using the already-committed real USGS 2014 earthquake catalog (`data/part-I/usgs_earthquakes_2014.csv`, 120k events; a different, more recent catalog than 1.5/1.7's 2023 snapshot). Filtered to `mag >= 4`, `depth_km > 0` (17,533 events); colour by `np.log10(depth_km)`, size by `mag ** 2`, matching the old exercise's log-depth/magnitude-size scheme. Has a full worked solution, unlike Exercise 10. |
 | Old 1.8, Exercise 2, Part I | Cartopy: Antarctic Sea Ice | **Restored** — new Exercise 10 uses two real NOAA/NSIDC Antarctic sea-ice concentration snapshots (August and December 2017, `data/part-I/seaice_conc_daily_sh_f17_*.nc`) on a south polar stereographic grid with 2D lat/lon coordinates, plotted with `ccrs.SouthPolarStereo()`. It is also new 1.4's first hints-as-comments, no-solution real-dataset capstone — a structural gap this subchapter had relative to its siblings, now closed. |
-| Old 1.8, Exercise 2, Part II | Cartopy: mapping 2014 earthquakes | **Still no counterpart** — not attempted this pass. |
+| Old 1.8, Exercise 2, Part II | Cartopy: mapping 2014 earthquakes | **Restored** as new Exercise 12, reusing Exercise 11's same 2014 catalog and `mag >= 4` filter, plotted on a `ccrs.PlateCarree()` map with coastlines. Hints as comments, no solution provided — matching the book's capstone-exercise convention (like Exercise 10). |
 
 ## New in the new book, no old-book counterpart
 
@@ -52,7 +52,16 @@ old subchapter (1.7.13); it is co-equal, core content in the new one.
 - Going-deeper boxes on lazy loading with dask and cloud-native zarr (ARCO-ERA5) — neither concept appears anywhere in the old material.
 - The explicit vector-vs-raster figure-saving section.
 
-Every exercise (1–9) is blank with a matching worked solution in a separate
-`1.4-matplotlib-and-xarray-solutions.ipynb`. Exercises 1–8 use synthetic data; Exercise 9 (NASA
-GISTEMP) and Exercise 10 (Antarctic sea ice) use real data — Exercise 10 has no solution
-provided, matching the book's capstone-exercise convention.
+Every exercise (1–12) is blank with a matching worked solution in
+`1.4-matplotlib-and-xarray-solutions.ipynb`, except the two real-dataset capstones. Exercises 1–8
+use synthetic data; Exercises 9 (NASA GISTEMP) and 11 (2014 earthquakes, scatter) use real data
+with worked solutions; Exercises 10 (Antarctic sea ice) and 12 (2014 earthquakes, cartopy) have
+no solution provided, matching the book's capstone-exercise convention.
+
+**2026-09-14 fix pass:** restored the two earthquake exercises (old Exercise 1 Part II and
+Exercise 2 Part II) flagged above as dropped, closing this subchapter's last known real-data gap.
+Used the real USGS 2014 catalog already sitting committed but unreferenced at
+`data/part-I/usgs_earthquakes_2014.csv` (hash-verified against the live file) rather than the old
+book's dead-SharePoint source. The old exercise's own framing ("earthquakes in the US") doesn't
+match this dataset, which is global — kept as a worldwide `mag >= 4` catalog rather than force a
+US-only filter that would misrepresent the data.
