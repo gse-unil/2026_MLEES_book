@@ -62,3 +62,10 @@ working broadcast code, paired with the existing commented-out `ValueError` cell
 `row_means`, the latter deliberately drawn as a row too, for visual comparability); `reshape(-1)`;
 `vstack`; and `np.where`/NaN. The three original mermaid diagrams (indexing, broadcasting,
 reductions/reshape/stacking) are gone, replaced one-for-one and then some by this set.
+
+**2026-09-15 exercise/image audit:** old 1.6's Argo exercise is mapped question by question in
+[`ch1-exercises-and-images-audit.md`](ch1-exercises-and-images-audit.md) §1. Its three plotting
+questions (profiles by depth, `errorbar` mean profiles, lon/lat scatter) were dropped, yet 1.3's
+exercise intro and closing box both promise them back in 1.4, where Argo does not appear. Also
+recorded there: 1.3 Exercise 9 has no figure, and the old book's Argo dive-cycle diagram carries a
+third-party copyright credit, so it cannot simply be copied.

@@ -47,3 +47,10 @@ capstone) are renumbered 7, 8, 9 — including the solutions notebook and the "E
 real-dataset walkthrough, has no solution provided" line in its intro box. 1.2's own Exercise 15
 ("A season of station data, continued") cross-references this capstone by number and is updated
 to match (now "Exercise 9 of the previous subchapter").
+
+**2026-09-15 exercise/image audit:** the 1.1 renumbering above left the *solutions* notebook
+inconsistent — cell 15 repeats Exercise 6's π answer under Exercise 7's heading, cell 17 holds
+Exercise 7's answer under Exercise 8's heading, and cells 18–19 are Exercise 8's answer under a
+stale "Exercise 7" heading. Recorded as a blocker in
+[`ch1-exercises-and-images-audit.md`](ch1-exercises-and-images-audit.md) §2, which also maps old
+1.2's warm-ups and its dropped `csv`-module tabular exercise question by question.

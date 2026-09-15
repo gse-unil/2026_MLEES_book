@@ -328,3 +328,10 @@ Verified: both notebooks re-extracted and run top to bottom, 19 solutions and 9 
 no errors. The three `.npy` pooch URLs 404 until the files are committed and pushed (expected, same
 as every dataset here on first addition); the exercise and solution code was verified against the
 local copies in the meantime.
+
+**2026-09-15 exercise/image audit:** 1.4's replicating-plots port is the cleanest in the chapter —
+all four old targets kept and regenerated locally. One contradiction found: cell 39 of the
+exercises (and cell 38 of the solutions) says "The last two have no worked solution", but the
+solutions notebook works Exercises 20 and 21 in full. Recorded as a blocker in
+[`ch1-exercises-and-images-audit.md`](ch1-exercises-and-images-audit.md) §2, together with the
+proposal to add the dropped Argo plotting questions here.

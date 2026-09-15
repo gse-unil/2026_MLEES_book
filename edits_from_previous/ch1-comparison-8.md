@@ -111,3 +111,12 @@ extracted and run in order against the project environment, no errors; every pri
 new prose was checked against the actual output, and the quoted bill-measurement ranges
 (32–58 mm, 15–21 mm) and record count (344 records, 342 after dropping the two with no body
 measurements) against the committed dataset. The notebook needs `Restart & Run All`.
+
+**2026-09-15 exercise/image audit:** 1.8 absorbed *two* old exercise pages — 1.14 (multivariate
+regression + penguin clustering) and 1.16 (marathon/seaborn) — and is the thinnest-covered
+subchapter in the chapter as a result. The advertising regression survives and is stronger than
+the old version; the elbow method and silhouette analysis were dropped from the exercises despite
+staying in the lecture, and 1.16 was dropped whole, taking `jointplot`, `PairGrid`, `kdeplot` and
+`violinplot` with it. `PairGrid`/`pairplot` and `violinplot` now appear nowhere in Part I. Full
+question-by-question mapping, plus the cheapest repairs, in
+[`ch1-exercises-and-images-audit.md`](ch1-exercises-and-images-audit.md) §1 and §3.

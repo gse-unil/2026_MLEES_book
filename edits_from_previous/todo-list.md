@@ -48,6 +48,50 @@ pre-existing `%TODO`-style marker found by scanning the rest of the book. Not pu
   the file. Not re-investigated further; worth a quick glance to confirm the current output is
   genuinely current and not stale.
 
+### 2026-09-15 exercise/image audit — resolved the same day
+
+Everything raised by [`ch1-exercises-and-images-audit.md`](ch1-exercises-and-images-audit.md) was
+actioned in the same session; see that file's §6 for the full record. Closed:
+
+- ~~1.1 solutions cells 14–19 shifted and duplicated~~ — **resolved.** Each answer now sits under
+  its own heading; the duplicate π solution and the stale "Exercise 7" heading are gone.
+- ~~1.4's "The last two have no worked solution"~~ — **resolved.** The sentence was false and has
+  been deleted from both notebooks; Exercises 20 and 21 keep their solutions.
+- ~~1.3 promising the Argo plots in 1.4~~ — **resolved.** The three old plotting questions are back
+  in 1.3 Exercise 9 as Steps 9–11, where the 2025 book had them, with its own target figures and a
+  "Beyond this subchapter" box for `matplotlib`. Both forward references rewritten.
+- ~~`data/part-I/USGS_Earthquakes.zip` orphaned~~ — **resolved.** Removed.
+- ~~Exercise coverage gaps in 1.8~~ — **resolved** except `enumerate` (see below). The old penguin
+  clustering exercise is back as 1.8 Exercise 11 (elbow, `silhouette_score`, both k=3 and k=2
+  scatters) and the old marathon exercise as 1.8 Exercise 12 (`jointplot`, `PairGrid`, `kdeplot`,
+  `violinplot`), each with its original target figures.
+- ~~Missing figures~~ — **resolved.** The Argo dive-cycle diagram is in 1.3 Exercise 9, the
+  expectation-maximization figure in 1.8's k-means section, the NASA montage in 1.2 Exercise 16.
+
+Correction to the audit: 1.8 Exercises 5, 9 and 10 *did* have solutions — hidden below the
+`pooch.retrieve` call inside cells labelled "Pre-supplied: download the data file". Those three
+cells have been split so the label tells the truth. No other Part I notebook has that pattern.
+
+## Part I — still open after 2026-09-15
+
+- **CLAUDE.md's exercises convention no longer matches Part I.** It says the long real-dataset
+  exercise carries "**no solution**". Every exercise in Part I now has a worked solution, checked
+  across all nine exercise/solution pairs. Either the rule goes or the solutions do — but the
+  current text describes nothing in the book.
+- **`enumerate` is taught in 1.2 and exercised nowhere.** The old warm-up that covered it looped
+  over a list of colour names; there was nothing there worth restoring, so the gap is still open
+  and wants a purpose-built short exercise rather than a port.
+- **`PairGrid` and `violinplot` are exercised in 1.8 Exercise 12 but taught nowhere.** Handled for
+  now with a "Beyond this subchapter" box, the same device 1.5 and 1.6 use. If 1.8's lecture is
+  ever extended, these two are the obvious additions.
+- **The Argo dive-cycle figure is credited "© Thomas Haessig"** on Euro-Argo's own outreach page —
+  an all-rights-reserved credit, not an open licence. Added at your explicit instruction with full
+  attribution and a link. Permission has not been sought. Worth settling before the book is
+  published, or worth redrawing locally the way `_static/make_numpy_diagrams.py` does for 1.3.
+- **`data/part-I/marathon-data.csv` is not pushed yet**, so 1.8 Exercise 12's `pooch` URL 404s
+  until it is — the usual first-addition state for a dataset here. The solution was verified
+  against the local copy.
+
 ## Part III — open from this session
 
 - **5.3 (Physically-Informed Climate Modeling) — not started.** Blocked on a sizing decision for
