@@ -17,11 +17,17 @@
 //       - kaggle-badge.mjs
 //
 // If you rename the repo or change the default branch, edit REPO / BRANCH.
+//
+// The badges point at the generated notebook-friendly copy under live/, not at
+// the book source: Colab and Kaggle render neither MyST admonitions nor
+// `_static/` image paths. Regenerate live/ with tools/make_live.py and commit
+// it, or these links 404.
 
 import path from 'node:path';
 
 const REPO = 'gse-unil/2026_MLEES_book';
 const BRANCH = 'main';
+const LIVE_DIR = 'live';   // see tools/make_live.py
 const BADGE = 'https://img.shields.io/badge/Open%20in-Kaggle-20BEFF?logo=kaggle&logoColor=white';
 
 function getBadgeRow(tree) {
@@ -44,13 +50,15 @@ const addKaggleBadge = {
     const src = vfile?.path;
     if (!src || !src.endsWith('.ipynb')) return; // notebooks only
 
-    // path of the notebook relative to the project root (== its GitHub path)
+    // path of the notebook relative to the project root, redirected to its
+    // generated counterpart under live/ (== that file's GitHub path)
     const rel = path
       .relative(process.cwd(), path.resolve(src))
       .split(path.sep)
       .join('/');
+    const liveRel = `${LIVE_DIR}/${rel}`;
 
-    const githubUrl = `https://github.com/${REPO}/blob/${BRANCH}/${rel}`;
+    const githubUrl = `https://github.com/${REPO}/blob/${BRANCH}/${liveRel}`;
     const url = `https://www.kaggle.com/kernels/welcome?src=${githubUrl}`;
 
     const row = getBadgeRow(tree);
