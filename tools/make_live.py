@@ -19,7 +19,11 @@ relative path, in which:
   * long code cells are split into smaller ones, so that a cell is one step in
     a live session rather than one paragraph on a page;
   * outputs are stripped -- the website carries them, and a split cell's
-    outputs cannot be attributed to its pieces anyway.
+    outputs cannot be attributed to its pieces anyway;
+  * a setup cell goes in at the top, installing the niche packages the notebook
+    imports that a hosted runtime lacks (cartopy is the usual one) and creating
+    the `_files/` directory it writes into.  Both are guarded, so the cell does
+    nothing in an environment that is already complete.
 
 live/ is generated. Editing it by hand loses the edit on the next run: change
 the book notebook and regenerate. The files do have to be committed and
@@ -91,6 +95,96 @@ CLASS_OPTION = re.compile(r"^:class:[ \t]*(.+)$")
 FIGURE_OPEN = re.compile(r"^```\{figure\}[ \t]*(\S+)[ \t]*$")
 OPTION_LINE = re.compile(r"^([a-z-]+):[ \t]*(.*)$")
 BACKTICK_SPAN = re.compile(r"`([^`]+)`")
+
+
+# --- hosted-runtime setup ------------------------------------------------
+# Colab and Kaggle start in an empty working directory and do not ship every
+# package these notebooks import. The generated setup cell fixes both, guarded
+# so that it is a no-op in an environment that is already complete.
+#
+# Only niche packages are listed. numpy, pandas, matplotlib, scipy, sklearn,
+# seaborn, torch and torchvision are deliberately left out: they are present on
+# every hosted runtime, and installing torch or torchvision from here could
+# pull a build that does not match the runtime's CUDA.
+COLAB_PIP = {
+    "cartopy": "cartopy",
+    "geopandas": "geopandas",
+    "gsw": "gsw",
+    "lightning": "lightning>=2.5.3,<2.6",
+    "netCDF4": "netcdf4",
+    "omegaconf": "omegaconf",
+    "palmerpenguins": "palmerpenguins",
+    "plotly": "plotly",
+    "pooch": "pooch",
+    "properscoring": "properscoring",
+    "rasterio": "rasterio",
+    "rioxarray": "rioxarray",
+    "shap": "shap",
+    "torch_geometric": "torch-geometric",
+    "torchmetrics": "torchmetrics",
+    "xarray": "xarray",
+    "xgboost": "xgboost",
+    "zarr": "zarr",
+    "zstandard": "zstandard",
+}
+
+IMPORT_LINE = re.compile(r"^[ \t]*(?:import|from)[ \t]+([A-Za-z_]\w*)")
+FILES_USE = re.compile(r"""["']\.{0,2}/?_files/""")
+
+
+def code_sources(nb: dict) -> list[str]:
+    return ["".join(c["source"]) for c in nb["cells"] if c["cell_type"] == "code"]
+
+
+def uncommented(source: str) -> str:
+    return "\n".join(re.sub(r"#.*$", "", line) for line in source.split("\n"))
+
+
+def setup_source(nb: dict) -> str | None:
+    """The generated setup cell for one notebook, or None if it needs nothing."""
+    imported: set[str] = set()
+    writes_files = False
+    for source in code_sources(nb):
+        for line in source.split("\n"):
+            if line.lstrip().startswith(("!", "%")):
+                continue
+            m = IMPORT_LINE.match(line)
+            if m:
+                imported.add(m.group(1))
+        if FILES_USE.search(uncommented(source)):
+            writes_files = True
+
+    needed = {mod: COLAB_PIP[mod] for mod in sorted(imported & COLAB_PIP.keys())}
+    if not needed and not writes_files:
+        return None
+
+    lines = ["# --- environment setup (generated, not part of the lesson) ---"]
+    if needed:
+        lines.append("# Colab and Kaggle do not ship every package this notebook imports.")
+    if writes_files:
+        lines.append("# Colab and Kaggle start in an empty working directory.")
+    lines.append("# This is a no-op in an environment that is already set up.")
+
+    if needed:
+        entries = ", ".join(f'"{mod}": "{pkg}"' for mod, pkg in needed.items())
+        lines += [
+            "import importlib.util",
+            "import subprocess",
+            "import sys",
+            "",
+            f"for module, package in {{{entries}}}.items():",
+            "    if importlib.util.find_spec(module) is None:",
+            '        subprocess.run([sys.executable, "-m", "pip", "install", "-q", package], check=True)',
+        ]
+    if writes_files:
+        if needed:
+            lines.append("")
+        lines += [
+            "from pathlib import Path",
+            "",
+            'Path("_files").mkdir(exist_ok=True)   # the folder this notebook writes into',
+        ]
+    return "\n".join(lines)
 
 
 def strip_blank_edges(lines: list[str]) -> list[str]:
@@ -311,6 +405,18 @@ def convert(nb: dict, rel_path: Path) -> dict:
         f"`tools/make_live.py`. Edit the book notebook, not this file."
     )
     cells.append({"cell_type": "markdown", "metadata": {}, "source": as_source(header)})
+
+    setup = setup_source(nb)
+    if setup:
+        cells.append(
+            {
+                "cell_type": "code",
+                "metadata": {},
+                "execution_count": None,
+                "outputs": [],
+                "source": as_source(setup),
+            }
+        )
 
     for cell in nb["cells"]:
         tags = cell.get("metadata", {}).get("tags", [])
