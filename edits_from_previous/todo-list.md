@@ -72,12 +72,79 @@ Correction to the audit: 1.8 Exercises 5, 9 and 10 *did* have solutions — hidd
 `pooch.retrieve` call inside cells labelled "Pre-supplied: download the data file". Those three
 cells have been split so the label tells the truth. No other Part I notebook has that pattern.
 
+## Cross-part — TOC titles, 2026-09-15
+
+Chapter-page card titles were checked against every linked page's own H1, on the rule that the page
+title is the real title. Seventeen cards were stale and have been rewritten to match:
+ch-1 (six: 1.1, 1.3, 1.4, 1.5, 1.6, 1.7), ch-3 (four), ch-4 (three), ch-6 (two), ch-7 (two).
+All 42 chapter-page cards now match their page exactly.
+
+The cards were only half of it. `myst.yml`'s sidebar carried its own `title:` overrides holding the
+same stale short titles, so fixing the cards alone would have left the sidebar and the chapter page
+disagreeing. Eleven subchapter overrides (Parts II and III) were deleted so the sidebar inherits the
+page H1 — which is what Part I already does, and why Part I's sidebar was correct while its chapter
+page was not. Deleting the override rather than correcting it is what stops this drifting again.
+
+**Then, at your instruction, the exercise page titles were put back to the 2025 book's own
+`(Exercises)/(Exercise) Topic` format** — fixing it at the source rather than in the TOC, so the
+cards and the sidebar both inherit it. The 2025 book's sidebar was re-fetched to get the wording
+verbatim rather than reconstructed; it uses plural in chapters 2, 3 and 8 and singular in 4 to 7
+and 9 to 11, and that split is now reproduced exactly. Ten notebook H1s changed:
+
+| Page | Was | Now |
+|---|---|---|
+| 3.2 | Exercise 1: Comparing Different Types of Support Vector Machines for Classification | (Exercises) Support Vector Machines |
+| 3.3 | Exercise 2: Training and Fine-Tuning a Decision Tree for the Moons Dataset | (Exercises) Decision Trees and Random Forest |
+| 3.4 | Exercise 3: Comparing (Ensemble of) Classifiers on MNIST Data | (Exercises) Ensemble Modeling and Stacking |
+| 3.5 | Exercise 4: Mapping Wildfire Susceptibility in the Liguria Region with Simple Machine Learning Classifiers | (Exercises) Wildfire Susceptibility Mapping |
+| 4.2 | Dimensionality Reduction | (Exercise) Dimensionality Reduction |
+| 4.3 | Clustering | (Exercise) Clustering |
+| 4.4 | Ocean Regimes Identification | (Exercise) Ocean Regimes Identification |
+| 6.3 | (Exercise) Land Cover Classification using Convolutional Neural Networks (CNNs) | (Exercise) Land Cover Classification |
+| 7.3 | Exercise 1: Comparing Different Types of Recurrent and Convolutional Neural Networks to Compose Bach Chorales | (Exercise) Composing Music |
+| 7.4 | Exercise 2 – Recurrent Neural Networks for Hydrological Modeling | (Exercise) Hydrological Modeling |
+
+2.2, 2.3, 2.5, 5.2, 6.2, 8.2, 9.2, 10.2, 10.3 and 11.2 already carried the format and were left
+alone. Nothing in the book's prose cross-referenced any of the removed long titles.
+
+After the retitle, all 39 chapter-page cards match their page, `myst.yml` has no subchapter title
+override left to drift, and the only sidebar/page differences remaining are the deliberate
+`N)` vs `Chapter N:` numbering on the ten chapter landing pages.
+
+Still open, and needing your call:
+
+- **`index.md` was not touched** — its cards point at part-level pages, not chapters, and its titles
+  are deliberately short ("Part I — Scientific Python" for a page titled "(Part I) Basics of
+  Scientific Programming for Applied Machine Learning"). Note that its Part IV card reads
+  "Towards **Thustworthy** AI" — a typo, in four separate copies of the card block.
+- **There is no `part-III/ch-5-intro.md`.** Chapters 6, 7 and 8 have landing pages; chapter 5 does
+  not, and its `myst.yml` entry is commented out. Consistent with 5.3 being unstarted, but it means
+  5.1 and 5.2 currently hang off the part page with no chapter card.
+- ~~Pre-existing notebook hygiene: missing and duplicate cell ids~~ — **resolved 2026-09-15.**
+  All 62 notebooks declared `"nbformat_minor": 5`, which requires a per-cell `id`, but 1385 of 2888
+  cells had none: 26 legacy notebooks ported from the 2025 book had none at all, and 15 Part I
+  notebooks were a mix from tooling that did not add the field. 1385 ids added and the two duplicates
+  in `part-I/1.4-matplotlib-and-xarray.ipynb` renamed. `nbformat.validate` is now clean across all
+  62 with warnings promoted to errors.
+
+  Worth knowing how it was done, in case the pass is ever repeated: writing notebooks back through
+  `nbformat` or a default `json.dumps` reformats the whole file — it unescapes `\uXXXX` sequences and
+  collapses `"source"` from nbformat's list-of-lines into a single string — which buries a one-line
+  change in a whole-file diff. Instead each notebook was re-serialised with the exact `json.dumps`
+  parameters that reproduce its own current bytes (three variants are in use across this repo:
+  `indent=1` with and without a trailing newline, and `indent=1, ensure_ascii=True` for the three
+  notebooks holding emoji and accented characters). The resulting diff contains only the added `id`
+  lines. Verified semantically as well: 52 of 62 notebooks are cell-for-cell identical to HEAD, and
+  the other 10 differ only in the H1 line that the retitle above changed.
+
 ## Part I — still open after 2026-09-15
 
-- **CLAUDE.md's exercises convention no longer matches Part I.** It says the long real-dataset
-  exercise carries "**no solution**". Every exercise in Part I now has a worked solution, checked
-  across all nine exercise/solution pairs. Either the rule goes or the solutions do — but the
-  current text describes nothing in the book.
+- ~~CLAUDE.md's exercises convention no longer matches Part I~~ — **resolved 2026-09-15 at your
+  instruction.** The "one long exercise on a real dataset ... **no solution**" rule is gone.
+  CLAUDE.md's "Structure of a subchapter" now states that every exercise has a worked solution in a
+  separate solutions notebook, that the two notebooks carry identical exercise headings in
+  identical order, and that no solution may hide inside a cell labelled as pre-supplied setup.
+  `/check-coverage` step 8 updated to match, and a new step 9 checks the solutions notebook.
 - **`enumerate` is taught in 1.2 and exercised nowhere.** The old warm-up that covered it looped
   over a list of colour names; there was nothing there worth restoring, so the gap is still open
   and wants a purpose-built short exercise rather than a port.

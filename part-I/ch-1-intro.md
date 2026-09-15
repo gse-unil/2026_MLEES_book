@@ -4,7 +4,7 @@ This is the first chapter of the book; it covers the following subchapters. One 
 
 ::::{grid} 1 1 2 2
 
-:::{card} 1.1) Variables, Data Types, Operators, and File I/O
+:::{card} 1.1) Variables, Data Types, Operators and File I/O
 :link: 1.1-environment-and-data-types.ipynb
 
 Variables, scalar types, casting, string formatting, and reading and writing text files.
@@ -18,35 +18,35 @@ Lists, tuples, and dicts, plus the control flow and functions that tie them toge
 
 :::
 
-:::{card} 1.3) Scientific Computing with Numpy
+:::{card} 1.3) Scientific Computing with numpy
 :link: 1.3-numpy.ipynb
 
 The numpy array: creation, indexing, vectorised math, broadcasting, and reductions.
 
 :::
 
-:::{card} 1.4) Matplotlib and Xarray
+:::{card} 1.4) Visualization with matplotlib, cartopy, and xarray
 :link: 1.4-matplotlib-and-xarray.ipynb
 
 Building figures with matplotlib, and labelled, multi-dimensional arrays with xarray.
 
 :::
 
-:::{card} 1.5) Pandas
+:::{card} 1.5) Tabular Data with pandas
 :link: 1.5-pandas.ipynb
 
 Series and DataFrames: selecting, resampling, grouping, and handling missing data.
 
 :::
 
-:::{card} 1.6) Geospatial Vector Data with GeoPandas
+:::{card} 1.6) Geospatial Vector Data with geopandas
 :link: 1.6-geospatial-vector-data.ipynb
 
 Points, lines, and polygons with geopandas: projections, joins, and measuring correctly.
 
 :::
 
-:::{card} 1.7) Object-oriented and defensive programming for environmental systems
+:::{card} 1.7) Object-Oriented and Defensive Programming
 :link: 1.7-oop-for-environmental-systems.ipynb
 
 Bundling state and behaviour into classes, then reading and trusting code you didn't write — assertions, exceptions, logging, and tests.

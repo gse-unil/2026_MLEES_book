@@ -328,8 +328,10 @@ Specifically:
   stale-numbered heading are gone.
 - 1.4's "The last two have no worked solution" sentence deleted from both notebooks. It was false —
   Exercises 20 and 21 are worked in full — and keeping the solutions is what matches 1.1, 1.2, 1.3,
-  1.5 and 1.6. **CLAUDE.md's "one long exercise on a real dataset ... no solution" rule no longer
-  describes Part I anywhere and should be updated or dropped.**
+  1.5 and 1.6. CLAUDE.md's conflicting "one long exercise on a real dataset ... no solution" rule
+  was then dropped at the user's instruction: the convention is now that **every exercise has a
+  worked solution in a separate solutions notebook**, with matching headings in matching order and
+  nothing hidden inside a pre-supplied cell. `/check-coverage` updated to check that.
 - Bonus A Exercise 6 pointed at `https://example.org/data/temperature.csv` with an all-zero hash, so
   its solution had to be commented out to avoid failing. It now fetches this repo's own
   `forest_fires.csv` with its real hash, runs, and demonstrates the cache-hit-on-second-run

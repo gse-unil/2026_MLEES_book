@@ -135,13 +135,9 @@ project:
             - file: part-II/3.1-simple-machine-learning-algorithms.ipynb
               title: "3.1) Basic Machine Learning Algorithms for Classification Tasks"
             - file: part-II/3.2-svm-exercises.ipynb
-              title: "3.2) (Exercises) Support Vector Machines"
             - file: part-II/3.3-decision-trees-and-random-forest-exercises.ipynb
-              title: "3.3) (Exercises) Decision Trees and Random Forest"
             - file: part-II/3.4-ensemble-modeling-and-stacking-exercises.ipynb
-              title: "3.4) (Exercises) Ensemble Modeling and Stacking"
             - file: part-II/3.5-wildfire-susceptibility-mapping-exercises.ipynb
-              title: "3.5) (Exercises) Wildfire Susceptibility Mapping"
 
         - file: part-II/ch-4-intro.md
           title: "4) Unsupervised Learning (Clustering, Dimensionality Reduction) and Environmental Complexity"
@@ -149,11 +145,8 @@ project:
             - file: part-II/4.1-unsupervised-learning-for-clustering-and-dimensionality-reduction.ipynb
               title: "4.1) Unsupervised Learning for Clustering and Dimensionality Reduction"
             - file: part-II/4.2-dimensionality-reduction-exercises.ipynb
-              title: "4.2) (Exercises) Dimensionality Reduction"
             - file: part-II/4.3-clustering-exercises.ipynb
-              title: "4.3) (Exercises) Clustering"
             - file: part-II/4.4-ocean-regimes-identification-exercises.ipynb
-              title: "4.4) (Exercises) Ocean Regimes Identification"
 
     - file: part-III/part-III.md
       children:
@@ -166,9 +159,7 @@ project:
             - file: part-III/6.1-cnn-remote-sensing.ipynb
               title: "6.1) Convolutional Neural Networks and Remote Sensing"
             - file: part-III/6.2-deep-computer-vision-exercises.ipynb
-              title: "6.2) (Exercises) Deep Computer Vision"
             - file: part-III/6.3-land-cover-classification-exercises.ipynb
-              title: "6.3) (Exercises) Land Cover Classification"
 
         - file: part-III/ch-7-intro.md
           title: "7) Recurrent Neural Networks and Hydrological Modeling"
@@ -178,9 +169,7 @@ project:
             - file: part-III/7.2-neural-networks-for-time-series-predictions.ipynb
               title: "7.2) Neural Networks for Time Series Predictions"
             - file: part-III/7.3-composing-music-exercises.ipynb
-              title: "7.3) (Exercises) Composing Music"
             - file: part-III/7.4-hydrological-modeling-exercises.ipynb
-              title: "7.4) (Exercises) Hydrological Modeling"
 
         - file: part-III/ch-8-intro.md
           title: "8) Graph Neural Networks and Interconnected Systems"
@@ -213,7 +202,7 @@ project:
               title: "10.3) (Exercise) Autoencoders, Generative Adversarial Networks, and Diffusion Models"
 
         - file: part-IV/ch-11-intro.md
-          title: "11) Hybrid Modeling and Knowledge-Guided Machine Learning"
+          title: "11) Hybrid Modeling and Knowledge-Guided Learning"
           children:
             - file: part-IV/11.1-introduction-to-hybrid-modeling.ipynb
               title: "11.1) Introduction to Hybrid Modeling"

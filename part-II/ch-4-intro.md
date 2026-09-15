@@ -14,7 +14,7 @@ methods, and clustering with K-means, Gaussian mixture models, and DBSCAN.
 
 :::
 
-:::{card} 4.2) (Exercises) Dimensionality Reduction
+:::{card} 4.2) (Exercise) Dimensionality Reduction
 :link: 4.2-dimensionality-reduction-exercises.ipynb
 
 Does PCA always speed up training and improve performance? Comparing a random forest and a
@@ -22,7 +22,7 @@ logistic regression classifier on MNIST, with and without PCA.
 
 :::
 
-:::{card} 4.3) (Exercises) Clustering
+:::{card} 4.3) (Exercise) Clustering
 :link: 4.3-clustering-exercises.ipynb
 
 Choosing the number of clusters for K-means on a subsample of MNIST digits, using the silhouette
@@ -30,7 +30,7 @@ score and inertia, with and without PCA to speed up training.
 
 :::
 
-:::{card} 4.4) (Exercises) Ocean Regimes Identification
+:::{card} 4.4) (Exercise) Ocean Regimes Identification
 :link: 4.4-ocean-regimes-identification-exercises.ipynb
 
 Clustering reduced-dimensionality ECCO ocean-model fields with xarray and K-means to identify

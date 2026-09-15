@@ -14,7 +14,7 @@ vegetation and land-cover remote sensing.
 
 :::
 
-:::{card} 6.2) (Exercises) Deep Computer Vision
+:::{card} 6.2) (Exercise) Deep Computer Vision
 :link: 6.2-deep-computer-vision-exercises.ipynb
 
 Training a CNN to classify flower photos, with and without data augmentation, tracking both
@@ -22,7 +22,7 @@ runs with early stopping, checkpointing, and TensorBoard.
 
 :::
 
-:::{card} 6.3) (Exercises) Land Cover Classification
+:::{card} 6.3) (Exercise) Land Cover Classification
 :link: 6.3-land-cover-classification-exercises.ipynb
 
 Classifying Sentinel-2 satellite imagery from the EuroSAT dataset into 10 land-cover classes,

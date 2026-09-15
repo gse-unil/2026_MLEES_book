@@ -22,7 +22,7 @@ transformer architecture.
 
 :::
 
-:::{card} 7.3) (Exercises) Composing Music
+:::{card} 7.3) (Exercise) Composing Music
 :link: 7.3-composing-music-exercises.ipynb
 
 Training a WaveNet-style dilated convolutional model, and recurrent architectures, to generate
@@ -30,7 +30,7 @@ new Bach chorales one note at a time.
 
 :::
 
-:::{card} 7.4) (Exercises) Hydrological Modeling
+:::{card} 7.4) (Exercise) Hydrological Modeling
 :link: 7.4-hydrological-modeling-exercises.ipynb
 
 Forecasting streamflow from temperature and precipitation records with an LSTM, evaluated using
