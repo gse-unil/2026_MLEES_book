@@ -7,7 +7,9 @@ networks with many layers, trained end to end, applied to the kinds of high-dime
 common in the geosciences — images, satellite imagery, and time series. It assumes Part II
 throughout, and uses PyTorch as its only deep-learning library.
 
-Chapter 6 covers convolutional neural networks (CNNs) — the architecture behind most modern
+Chapter 5 introduces the artificial neural network itself — neurons, layers, activation
+functions, and the explicit pytorch training loop — and puts it to work classifying handwritten
+digits. Chapter 6 covers convolutional neural networks (CNNs) — the architecture behind most modern
 image analysis — applied to two remote-sensing problems: classifying flower photographs and
 classifying Sentinel-2 satellite imagery into land-cover types, following the EuroSAT benchmark.
 Chapter 7 covers recurrent neural networks (RNNs), applied to generating Bach-style chorales and

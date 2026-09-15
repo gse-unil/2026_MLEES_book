@@ -150,8 +150,12 @@ project:
 
     - file: part-III/part-III.md
       children:
-        # - title: "5) Artificial Neural Networks and Surrogate Modeling"
-        #   children: (5.1, 5.2 ported; 5.3 still pending real climate-simulation data)
+        - file: part-III/ch-5-intro.md
+          title: "5) Artificial Neural Networks"
+          children:
+            - file: part-III/5.1-introduction-to-artificial-neural-networks.ipynb
+            - file: part-III/5.2-artificial-neural-networks-with-pytorch-exercises.ipynb
+            # - title: "5.3) Physically-Informed Climate Modeling" — deferred, see edits_from_previous/todo-list.md
 
         - file: part-III/ch-6-intro.md
           title: "6) Convolutional Neural Networks and Remote Sensing"
@@ -178,7 +182,7 @@ project:
               title: "8.1) What are Graph Neural Networks (GNNs)?"
             - file: part-III/8.2-graph-neural-networks-with-pytorch-exercises.ipynb
               title: "8.2) (Exercises) Graph Neural Networks with PyTorch"
-            # - title: "8.3) (Exercises) Neural Weather Prediction" — deferred, see part-III.md
+            # - title: "8.3) (Exercises) Neural Weather Prediction" — deferred, see edits_from_previous/todo-list.md
 
     # Part IV: Towards Trustworthy AI
     - file: part-IV/part-IV.md
@@ -200,6 +204,7 @@ project:
               title: "10.2) (Exercise) Introduction to Uncertainty Quantification and Generative Modeling"
             - file: part-IV/10.3-autoencoders-gans-diffusion-exercises.ipynb
               title: "10.3) (Exercise) Autoencoders, Generative Adversarial Networks, and Diffusion Models"
+            - file: part-IV/10.4-ldm-downscaling-exercises.ipynb
 
         - file: part-IV/ch-11-intro.md
           title: "11) Hybrid Modeling and Knowledge-Guided Learning"

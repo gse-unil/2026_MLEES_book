@@ -44,7 +44,7 @@ Regression and classification, model evaluation, unsupervised methods, and the b
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
 
-:::{card} Part IV — Towards Thustworthy AI
+:::{card} Part IV — Towards Trustworthy AI
 :link: part-IV/part-IV
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
@@ -121,7 +121,7 @@ Regression and classification, model evaluation, unsupervised methods, and the b
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
 
-:::{card} Part IV — Towards Thustworthy AI
+:::{card} Part IV — Towards Trustworthy AI
 :link: part-IV/part-IV
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
@@ -198,7 +198,7 @@ Regression and classification, model evaluation, unsupervised methods, and the b
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
 
-:::{card} Part IV — Towards Thustworthy AI
+:::{card} Part IV — Towards Trustworthy AI
 :link: part-IV/part-IV
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
@@ -275,7 +275,7 @@ Regression and classification, model evaluation, unsupervised methods, and the b
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
 
-:::{card} Part IV — Towards Thustworthy AI
+:::{card} Part IV — Towards Trustworthy AI
 :link: part-IV/part-IV
 Neural networks in PyTorch, architectures for spatial and sequential data, and applications such as remote sensing, downscaling, and emulation, alongside explainability and uncertainty quantification.
 :::
