@@ -156,6 +156,36 @@ locally for you and then fail for the next contributor (or in CI) with an unhelp
 Do not edit `pyproject.toml`'s dependency list by hand and then run `uv sync` — always go through
 `uv add` so the lockfile stays consistent with what's declared.
 
+### The `live/` copies: generated, never edited
+
+`live/` holds a copy of every notebook in the book, at the same relative path
+(`live/part-I/1.3-numpy.ipynb` for `part-I/1.3-numpy.ipynb`). The Colab and Kaggle badges open
+these copies, not the book source. Colab renders neither MyST directives nor `_static/` image
+paths, so `tools/make_live.py` converts admonitions to plain markdown, rewrites figures to raw
+GitHub URLs, strips outputs, and adds a setup cell that installs what a hosted runtime lacks.
+
+Every file in `live/` is overwritten the next time the script runs. An edit made there directly
+is erased without warning, and until then students opening the badge see a notebook that no
+longer matches the book. So:
+
+- **Edit the source notebook in `part-*/` or `appendix/`, then regenerate:**
+
+  ```bash
+  python3 tools/make_live.py part-I/1.3-numpy.ipynb   # or no argument to regenerate all
+  ```
+
+  Commit the regenerated `live/` file together with the source change. Colab and Kaggle fetch
+  `live/` from GitHub, so a copy that was not pushed shows the old version, or a 404 for a new
+  notebook.
+- **Do not save back to GitHub from Colab.** When you open a badge, Colab's *File → Save a copy
+  in GitHub* commits straight into `live/`. Even with no content change, Colab reorders the
+  notebook's JSON and adds its own metadata, so `python3 tools/make_live.py --check` then reports
+  the copy as stale. Use *File → Save a copy in Drive* for your own experiments. If you fixed
+  something while working in Colab, make the same change in the source notebook and regenerate.
+- **If a `live/` file was edited by mistake,** check whether the edit contains a real change
+  (compare cell sources, not the raw JSON diff, which Colab's reformatting inflates). Move
+  anything worth keeping into the source notebook, then regenerate to restore the copy.
+
 ---
 
 ## 6. Adding or moving a page
@@ -269,6 +299,7 @@ A short checklist:
 
 - [ ] The book builds locally: `uv run jupyter book build --html` succeeds.
 - [ ] Any notebook you touched runs clean from a restarted kernel, and is committed with its outputs.
+- [ ] `live/` was regenerated with `tools/make_live.py`, not hand-edited, and `python3 tools/make_live.py --check` passes (§5).
 - [ ] Any dataset you added is a verified, hash-pinned snapshot in `data/<part>/`, fetched via `pooch` (§7) — not a bare third-party URL, and not committed unprompted if over 50 MB.
 - [ ] No `_build/`, no stray checkpoints, no notebook-generated output (`_files/`) are staged (`git status` is clean of these).
 - [ ] New pages are added to the `toc` in `myst.yml`.
