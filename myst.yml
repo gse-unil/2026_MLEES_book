@@ -168,11 +168,11 @@ project:
     - file: part-III/part-III.md
       children:
         - file: part-III/ch-5-intro.md
-          title: "5) Artificial Neural Networks"
+          title: "5) Artificial Neural Networks and Surrogate Modeling"
           children:
             - file: part-III/5.1-introduction-to-artificial-neural-networks.ipynb
             - file: part-III/5.2-artificial-neural-networks-with-pytorch-exercises.ipynb
-            # - title: "5.3) Physically-Informed Climate Modeling" — deferred, see edits_from_previous/todo-list.md
+            - file: part-III/5.3-physically-informed-climate-modeling-exercises.ipynb
 
         - file: part-III/ch-6-intro.md
           title: "6) Convolutional Neural Networks and Remote Sensing"
@@ -199,7 +199,7 @@ project:
               title: "8.1) What are Graph Neural Networks (GNNs)?"
             - file: part-III/8.2-graph-neural-networks-with-pytorch-exercises.ipynb
               title: "8.2) (Exercises) Graph Neural Networks with PyTorch"
-            # - title: "8.3) (Exercises) Neural Weather Prediction" — deferred, see edits_from_previous/todo-list.md
+            - file: part-III/8.3-neural-weather-prediction-exercises.ipynb
 
     # Part IV: Towards Trustworthy AI
     - file: part-IV/part-IV.md

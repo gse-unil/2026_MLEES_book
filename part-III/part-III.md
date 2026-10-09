@@ -9,12 +9,13 @@ throughout, and uses PyTorch as its only deep-learning library.
 
 Chapter 5 introduces the artificial neural network itself — neurons, layers, activation
 functions, and the explicit pytorch training loop — and puts it to work classifying handwritten
-digits. Chapter 6 covers convolutional neural networks (CNNs) — the architecture behind most modern
+digits, then to a neural network that emulates the small-scale physics of a climate model. Chapter 6 covers convolutional neural networks (CNNs) — the architecture behind most modern
 image analysis — applied to two remote-sensing problems: classifying flower photographs and
 classifying Sentinel-2 satellite imagery into land-cover types, following the EuroSAT benchmark.
 Chapter 7 covers recurrent neural networks (RNNs), applied to generating Bach-style chorales and
 forecasting streamflow from a hydrological time series. Chapter 8 covers graph neural networks
-(GNNs), applied to Zachary's karate club network — a small, well-known benchmark graph.
+(GNNs), applied to Zachary's karate club network — a small, well-known benchmark graph — and to
+the graph formulation of weather forecasting.
 
 As in Part II, each chapter pairs one tutorial notebook with several standalone exercise
 notebooks, rather than Part I's one-lecture-one-exercises structure. Exercises adapt notebooks

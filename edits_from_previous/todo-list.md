@@ -183,17 +183,56 @@ Still open, and needing your call:
 
 ## Part III — open from this session
 
-- **5.3 (Physically-Informed Climate Modeling) — not started; deferred again 2026-09-15.**
-  Blocked on a sizing decision for
-  two climate-simulation files (`P4K`/`M4K` reduced NetCDFs, 1.82 GB each, ~3.64 GB total) —
-  deferred at your request ("I'll come back to it"). Options on the table were: subset to ~2% or
-  ~10% of samples, or split and commit the full files as-is (~92 chunk files). Nothing in `data/`
-  or `part-III/` yet for this subchapter.
-- **8.3 (Neural Weather Prediction / neural-lam) — not started; deferred again 2026-09-15**
-  (options put to you were permanent skip, a conceptual walkthrough with no runnable training, or
-  keep deferring). Originally deferred at your request ("skip it for now"). Wraps an external repo ([`mllam/neural-lam`](https://github.com/mllam/neural-lam)),
-  needs Google Drive + pinned old torch/CUDA versions, and a dead SharePoint dataset link. Needs a
-  decision on approach (conceptual walkthrough vs. full port vs. permanent skip) before starting.
+- **5.3 (Physically-Informed Climate Modeling)** — **written 2026-10-09, awaiting your review**, following the 10.4
+  recipe: the two simulations stay remote and are fetched with `pooch` and a pinned sha256, the
+  small files are committed. Needs your review before it counts as done:
+  - **Data.** The two NetCDFs (1.70 GiB each, 2,398,208 samples × 184 variables) sit on Tom
+    Beucler's personal SharePoint, tokenless links that still resolve. Hashed on 2026-10-09; both
+    equal the hashes the 2025 notebook already pinned
+    (`7b793afd…` cold = `…M4K_reduced.nc`, `211db8ae…` warm = `…P4K_reduced.nc`). Same revocation
+    risk as 10.4, same left-to-you remedy (Zenodo). Five small files committed to `data/part-III/`
+    (`climate_invariant_*`, 120 KB in all), documented in `data/README.md`. The three 22–26 MB
+    "normalization generator" training files of the 2025 notebook are **not** downloaded: only the
+    `sub`/`div` arrays are used, and they depend on the normalization files alone (verified equal).
+    `hyam`/`hybm` went from a pickle to `.npz`.
+  - **Port.** Keras to PyTorch: `DataGeneratorCI` is now a `torch.utils.data.Dataset` whose items are
+    whole batches (read with `netCDF4`, so no `h5py` dependency), the Keras callback is a `fit()`
+    helper, the three models are `nn.Sequential`. Trimmed the dead code of the 2025 cell (classes that
+    reference undefined names, unused scalings); the three rescalings the notebook uses give
+    **bit-identical** output to the 2025 numpy code on a real batch. `cumtrapz` (removed from scipy)
+    is `cumulative_trapezoid`. Glorot init to match the Keras defaults.
+  - **Text fixed.** $R_v$ and $R_d$ were swapped in the Q1 text (code was right); `PS` is in Pa,
+    not hPa (mean ≈ 93,000 in the data).
+  - **Images.** Header (Unsplash, credited) and three schematics kept, saved to `_static/5.3-*`.
+    `5.3-parameterization-inputs-outputs.png` has a cloud photograph of unknown licence at its
+    centre; **your call whether to keep it**. Dropped: the Adobe Stock closing art (standard licence
+    does not allow redistribution) and two Colab screenshots of Keras training.
+  - **Results quoted in the text** come from two seeds on a laptop CPU, not from a committed run:
+    brute-force warm/cold loss ratio 100 to 3,000 after 10 epochs, RH 5 to 7, climate-invariant ≈ 1.
+    With PyTorch's default initialization instead of Glorot, one seed (42) showed no brute-force
+    failure at all, which is consistent with the old text ("except for very specific choices of
+    architectures") but means the demonstration is init-sensitive. Training time: 1.5 min (brute
+    force), 2 min (RH), 8 min (climate-invariant) per 10 epochs on 3 parallel CPU jobs.
+  - **Memory.** Q1/Q2 peak at about 6 GB resident (9 GB before the normalizer was moved off xarray).
+  - Chapter 5 retitled "Artificial Neural Networks and Surrogate Modeling" (the 2025 title), as
+    suggested above.
+- **8.3 (Neural Weather Prediction)** — **written 2026-10-09 as a conceptual walkthrough, awaiting your review**, at
+  your instruction ("conceptual walkthrough"), not a port. Nothing is downloaded. A toy
+  encode-process-decode model on a 24 × 24 grid (multiscale and hierarchical mesh, a message-passing
+  layer in plain PyTorch, autoregressive rollout, RMSE against lead time and against persistence),
+  five exercises with solutions in dropdowns, and a table comparing the toy with the real graphs
+  (numbers read from the `.pt` graph files in the archive). The original exercise's three scripts
+  (`create_mesh.py`, `create_grid_features.py`, `create_parameter_weights.py`) were fill-in-and-save
+  tasks that the archive itself omits, so they are described, not reproduced. The training and
+  evaluation commands are given as a non-executed block.
+  - The old SharePoint link (the "dead" one) works: 3,103,473,055 bytes, sha256 `ad511b41…`, equal
+    to the hash the 2025 notebook pinned. It is in the notebook as a non-executed `pooch` block,
+    not fetched, because it is 2.89 GiB and nothing in the notebook needs it.
+  - The archive needs Python 3.10, PyTorch 2.0.1, PyG 2.3.1 (CUDA 11.7 wheels), per its README.
+  - Left out: the 2025 notebook's embedded wandb RMSE screenshots and the Graph-FM schematic from
+    the paper (unlicensed, and they were results of runs nobody here can reproduce).
+  - The 2024 figures of 700–1400 GPU-hours and "2.5 s per member" in the old text were not carried
+    over (they describe the paper's models, not this exercise).
 - ~~[7.4](../part-III/7.4-hydrological-modeling-exercises.ipynb), cell 24 — missing the "get it?"
   scales-pun image~~ — **closed 2026-09-15 by dropping the placeholder.** The
   "*(Reference image pending…)*" line is gone; the pun it belonged to ("a _problem of scales_" →
