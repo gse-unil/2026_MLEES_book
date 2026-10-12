@@ -229,8 +229,14 @@ Still open, and needing your call:
     to the hash the 2025 notebook pinned. It is in the notebook as a non-executed `pooch` block,
     not fetched, because it is 2.89 GiB and nothing in the notebook needs it.
   - The archive needs Python 3.10, PyTorch 2.0.1, PyG 2.3.1 (CUDA 11.7 wheels), per its README.
-  - Left out: the 2025 notebook's embedded wandb RMSE screenshots and the Graph-FM schematic from
-    the paper (unlicensed, and they were results of runs nobody here can reproduce).
+  - **Carried over at your instruction (2026-10-09):** the 2025 notebook's five embedded images,
+    saved as `part-III/_static/8.3-*`: the forecast header (ground truth, ensemble mean and std), the
+    Hi-LAM encode-process-decode schematic, the 57 h test-loss maps, and the GraphCast and Graph-FM
+    RMSE tables. They are labelled in the text as the original authors' runs, not reproduced here.
+    Licence not verified: the schematic is from the neural-lam authors' paper work, the rest are
+    wandb screenshots and plots from the course's own runs. The header forecast shows an ensemble
+    mean and spread, which a deterministic GraphCast or Graph-FM run does not produce; the caption
+    says the original does not state the variable or lead time.
   - The 2024 figures of 700–1400 GPU-hours and "2.5 s per member" in the old text were not carried
     over (they describe the paper's models, not this exercise).
 - ~~[7.4](../part-III/7.4-hydrological-modeling-exercises.ipynb), cell 24 — missing the "get it?"

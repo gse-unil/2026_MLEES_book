@@ -33,7 +33,11 @@ kaggle-badge.mjs prefix every badge URL with live/.
 Usage:
     python tools/make_live.py                 # regenerate everything
     python tools/make_live.py part-I/1.3-numpy.ipynb [more.ipynb ...]
-    python tools/make_live.py --check         # exit 1 if any copy is stale
+    python tools/make_live.py --check         # exit 1 if any copy is stale or orphaned
+
+A live copy whose source notebook no longer exists (renamed, split, deleted) is
+an orphan: a full run removes it, and --check reports it, so a badge cannot
+keep pointing at a notebook the book no longer has.
 """
 
 from __future__ import annotations
@@ -90,7 +94,9 @@ SPLIT_MARKER = re.compile(r"^[ \t]*#[ \t]*%%[ \t]*$")
 TAG_KEEP_WHOLE = "live-keep-whole"   # never split this cell
 TAG_DROP = "teaching-drop"           # omit this cell from the live copy
 
-DIRECTIVE_OPEN = re.compile(r"^(:{3,})\{([a-z-]+)\}[ \t]*(.*)$")
+# Colon fences (`:::{note}`) and backtick fences (```{hint}``) both open a box; a backtick
+# `{figure}` is a different directive, handled by convert_figures.
+DIRECTIVE_OPEN = re.compile(r"^(:{3,}|`{3,}(?=\{(?!figure\})))\{([a-z-]+)\}[ \t]*(.*)$")
 CLASS_OPTION = re.compile(r"^:class:[ \t]*(.+)$")
 FIGURE_OPEN = re.compile(r"^```\{figure\}[ \t]*(\S+)[ \t]*$")
 OPTION_LINE = re.compile(r"^([a-z-]+):[ \t]*(.*)$")
@@ -471,9 +477,16 @@ def sources(args: list[str]) -> list[Path]:
     return found
 
 
+def orphans(paths: list[Path]) -> list[Path]:
+    """Live copies with no source notebook behind them."""
+    expected = {LIVE_DIR / p.relative_to(ROOT) for p in paths}
+    return sorted(p for p in LIVE_DIR.rglob("*.ipynb") if p not in expected)
+
+
 def main(argv: list[str]) -> int:
     check = "--check" in argv
-    paths = sources([a for a in argv if not a.startswith("--")])
+    explicit = [a for a in argv if not a.startswith("--")]
+    paths = sources(explicit)
 
     stale: list[Path] = []
     written = 0
@@ -492,16 +505,32 @@ def main(argv: list[str]) -> int:
             dest.write_text(text, encoding="utf-8")
             written += 1
 
+    # Orphans are only judged on a full run: with explicit paths the source list is partial.
+    extra = [] if explicit else orphans(paths)
+
     if check:
-        if stale:
-            print("live copies out of date (run tools/make_live.py):")
-            for s in stale:
-                print(f"  {s}")
+        if stale or extra:
+            if stale:
+                print("live copies out of date (run tools/make_live.py):")
+                for s in stale:
+                    print(f"  {s}")
+            if extra:
+                print("live copies with no source notebook (run tools/make_live.py to remove):")
+                for o in extra:
+                    print(f"  {o.relative_to(ROOT)}")
             return 1
         print(f"{len(paths)} live copies up to date")
         return 0
 
-    print(f"{len(paths)} notebooks processed, {written} live copies written")
+    for o in extra:
+        o.unlink()
+        print(f"removed orphan: {o.relative_to(ROOT)}")
+        parent = o.parent
+        while parent != LIVE_DIR and not any(parent.iterdir()):
+            parent.rmdir()
+            parent = parent.parent
+
+    print(f"{len(paths)} notebooks processed, {written} live copies written, {len(extra)} orphans removed")
     return 0
 
 
